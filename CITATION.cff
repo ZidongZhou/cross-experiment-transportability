@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "Please cite the associated article and the archived software release when using these analyses."
+type: software
+repository-code: "https://github.com/ZidongZhou/cross-experiment-transportability"
+url: "https://github.com/ZidongZhou/cross-experiment-transportability"
+title: "Cross-experiment transportability of student assignment noncompletion prediction in online learning: analysis code"
+authors:
+  - family-names: Zhou
+    given-names: Zidong
+  - family-names: Meng
+    given-names: Yue
+  - family-names: Gao
+    given-names: Kun
+  - family-names: Wang
+    given-names: Xuanhe
+  - family-names: Liu
+    given-names: Ke
+version: "1.0"
+keywords:
+  - learning analytics
+  - educational data mining
+  - transportability
+  - prediction
+  - reproducibility

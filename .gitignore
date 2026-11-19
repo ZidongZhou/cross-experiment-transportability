@@ -1,0 +1,21 @@
+# Source data and record-level intermediate files
+data/
+analysis_work/
+*.pkl
+prediction_provenance.json
+
+# Interpreter and test artefacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local environments
+.venv/
+venv/
+
+# System and temporary files
+.DS_Store
+.ipynb_checkpoints/
+*.log
+*.tmp
+*.bak

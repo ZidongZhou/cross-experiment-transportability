@@ -1,0 +1,3 @@
+validation,model,feature_set,auroc,auprc,brier,log_loss,n,prevalence
+Learner-purged LOEO,Logistic regression,Complete learner history,0.7087379920808202,0.5188293303570963,0.193351974597273,0.5739541587816879,95109,0.31863440894131995
+Learner-purged LOEO,Logistic regression,Full transportable,0.7027265682054473,0.5156922930901104,0.19707007237713048,0.5867726175666605,95109,0.31863440894131995

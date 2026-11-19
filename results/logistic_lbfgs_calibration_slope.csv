@@ -1,0 +1,7 @@
+validation,model,scope,calibration_intercept,calibration_slope,n_experiments
+Row random,Logistic regression (SGD),Pooled,-0.012702863928276242,0.7273455289935897,88
+Row random,Logistic regression (LBFGS),Pooled,-0.006150502462626944,0.9911442252708713,88
+Row random,LightGBM,Pooled,0.12653812524313784,1.198916578167485,88
+Learner-purged LOEO,Logistic regression (SGD),Pooled,-0.11432439874127132,0.662281879124179,88
+Learner-purged LOEO,Logistic regression (LBFGS),Pooled,-0.12884577133151956,0.8539255362391058,88
+Learner-purged LOEO,LightGBM,Pooled,-0.05962869573140378,0.9633970398912811,88

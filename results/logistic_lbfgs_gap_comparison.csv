@@ -1,0 +1,7 @@
+validation,comparison,comparison_type,n_experiments,median_difference_auroc,bootstrap_95_low,bootstrap_95_high,proportion_logistic_better
+Row random,LightGBM minus Logistic regression (SGD),Model gap,80,0.024422977282129665,0.02108430177626619,0.028576367914824263,0.0875
+Row random,LightGBM minus Logistic regression (LBFGS),Model gap,80,0.01923792507350891,0.015923933922397326,0.022256057498385773,0.125
+Row random,LBFGS minus SGD logistic regression,Solver change,80,0.003364278584243152,0.0018610834164173307,0.006838863390068228,
+Learner-purged LOEO,LightGBM minus Logistic regression (SGD),Model gap,80,0.012109778619938727,0.00857293316686042,0.015609679728037396,0.2
+Learner-purged LOEO,LightGBM minus Logistic regression (LBFGS),Model gap,80,0.009452418765463544,0.007562361010636898,0.010726718665682144,0.2125
+Learner-purged LOEO,LBFGS minus SGD logistic regression,Solver change,80,0.002326527569674053,0.00042050641156382573,0.004314780220023073,

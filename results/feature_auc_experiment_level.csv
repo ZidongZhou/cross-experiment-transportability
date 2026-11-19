@@ -1,0 +1,561 @@
+experiment_id,validation,model,feature_set,n,events,auroc
+PSAM4NK,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1210,492,0.7698694431234004
+PSAUUKY,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1806,361,0.6932109001332325
+PSAZGQM,Learner-purged LOEO,Logistic regression (SGD),Full transportable,336,31,0.6711792702273929
+PSAZ5HX,Learner-purged LOEO,Logistic regression (SGD),Full transportable,840,457,0.7227005501882524
+PSAZ2G4,Learner-purged LOEO,Logistic regression (SGD),Full transportable,151,53,0.7527916827108202
+PSAYN42,Learner-purged LOEO,Logistic regression (SGD),Full transportable,757,234,0.7769116373322874
+PSAYCFH,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1972,938,0.7635551174769974
+PSAXD6K,Learner-purged LOEO,Logistic regression (SGD),Full transportable,147,15,0.7156565656565657
+PSAWU6Z,Learner-purged LOEO,Logistic regression (SGD),Full transportable,968,440,0.7576790633608815
+PSAWHF4,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1452,570,0.7597147630982217
+PSAVTMK,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1280,498,0.7496250988609169
+PSAVK69,Learner-purged LOEO,Logistic regression (SGD),Full transportable,825,441,0.8028923374905518
+PSAVDFE,Learner-purged LOEO,Logistic regression (SGD),Full transportable,2781,1780,0.7298083938533376
+PSAV89B,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1682,925,0.7288371594844514
+PSAUTWU,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1151,191,0.7128654013961606
+PSAUTWT,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1051,118,0.6749414137010192
+PSAUKPR,Learner-purged LOEO,Logistic regression (SGD),Full transportable,590,241,0.6682994685467667
+PSAUKPM,Learner-purged LOEO,Logistic regression (SGD),Full transportable,372,133,0.6793343190612515
+PSAUK57,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1183,678,0.7484359940418821
+PSAU88D,Learner-purged LOEO,Logistic regression (SGD),Full transportable,948,405,0.733574335538731
+PSAU85Y,Learner-purged LOEO,Logistic regression (SGD),Full transportable,605,175,0.7021129568106314
+PSAU7GZ,Learner-purged LOEO,Logistic regression (SGD),Full transportable,216,112,0.7223557692307692
+PSAU6Y4,Learner-purged LOEO,Logistic regression (SGD),Full transportable,585,97,0.8000253506844685
+PSAU5XF,Learner-purged LOEO,Logistic regression (SGD),Full transportable,213,38,0.6721804511278195
+PSAU4JD,Learner-purged LOEO,Logistic regression (SGD),Full transportable,641,111,0.6489206187319394
+PSATZEJ,Learner-purged LOEO,Logistic regression (SGD),Full transportable,2739,298,0.7701830309395699
+PSATP2Z,Learner-purged LOEO,Logistic regression (SGD),Full transportable,787,242,0.6720145575858669
+PSATNCQ,Learner-purged LOEO,Logistic regression (SGD),Full transportable,361,139,0.7560438135977705
+PSATNB2,Learner-purged LOEO,Logistic regression (SGD),Full transportable,2102,1059,0.7975749114787463
+PSASRKH,Learner-purged LOEO,Logistic regression (SGD),Full transportable,840,519,0.8103950203782737
+PSASDZY,Learner-purged LOEO,Logistic regression (SGD),Full transportable,496,79,0.7704519928361109
+PSASA67,Learner-purged LOEO,Logistic regression (SGD),Full transportable,374,126,0.6497695852534564
+PSASA4B,Learner-purged LOEO,Logistic regression (SGD),Full transportable,423,165,0.7059666431759454
+PSAS25R,Learner-purged LOEO,Logistic regression (SGD),Full transportable,154,17,0.74237870330614
+PSARZX2,Learner-purged LOEO,Logistic regression (SGD),Full transportable,470,71,0.7066257192276466
+PSAR9Y9,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1304,207,0.7138396769406242
+PSAR5JG,Learner-purged LOEO,Logistic regression (SGD),Full transportable,582,353,0.63968232368841
+PSAQJFP,Learner-purged LOEO,Logistic regression (SGD),Full transportable,3311,416,0.691133585757938
+PSAMR8Z,Learner-purged LOEO,Logistic regression (SGD),Full transportable,468,206,0.7710294226636033
+PSAKUSU,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1214,446,0.6913215853886397
+PSAJY7C,Learner-purged LOEO,Logistic regression (SGD),Full transportable,203,148,0.7239557739557739
+PSAJVP8,Learner-purged LOEO,Logistic regression (SGD),Full transportable,53,22,0.8577712609970675
+PSAJDQJ,Learner-purged LOEO,Logistic regression (SGD),Full transportable,2310,718,0.7034790946375329
+PSAJ4ZZ,Learner-purged LOEO,Logistic regression (SGD),Full transportable,460,67,0.7986403858569747
+PSAJ4ZU,Learner-purged LOEO,Logistic regression (SGD),Full transportable,278,107,0.7304476143630103
+PSAJ4YN,Learner-purged LOEO,Logistic regression (SGD),Full transportable,327,97,0.7270282384580905
+PSAJ2EE,Learner-purged LOEO,Logistic regression (SGD),Full transportable,74,15,0.7333333333333334
+PSAHQV,Learner-purged LOEO,Logistic regression (SGD),Full transportable,5294,1044,0.7872080234392608
+PSAH9CV,Learner-purged LOEO,Logistic regression (SGD),Full transportable,185,12,0.6979768786127167
+PSAGF4,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1768,139,0.7202105718739924
+PSABF5JC,Learner-purged LOEO,Logistic regression (SGD),Full transportable,5156,647,0.7052133068570055
+PSABCXRT,Learner-purged LOEO,Logistic regression (SGD),Full transportable,99,80,0.8171052631578948
+PSABARYW,Learner-purged LOEO,Logistic regression (SGD),Full transportable,672,330,0.7977760056707426
+PSABANRN,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1188,272,0.7407686873876188
+PSA9XWV,Learner-purged LOEO,Logistic regression (SGD),Full transportable,547,286,0.7209495485357554
+PSA98J7,Learner-purged LOEO,Logistic regression (SGD),Full transportable,2459,683,0.672968356350494
+PSA7GUA,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1843,867,0.7278005464480874
+PSA6DUN,Learner-purged LOEO,Logistic regression (SGD),Full transportable,875,190,0.7647637341529004
+PSA59VC,Learner-purged LOEO,Logistic regression (SGD),Full transportable,2084,756,0.6974046981577102
+PSA59TQ,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1847,405,0.6455899727744389
+PSA59TP,Learner-purged LOEO,Logistic regression (SGD),Full transportable,2585,364,0.6476416424637946
+PSA55VC,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1723,588,0.7436482963229345
+PSA52JK,Learner-purged LOEO,Logistic regression (SGD),Full transportable,2310,690,0.6794739667203434
+PSA4MS2,Learner-purged LOEO,Logistic regression (SGD),Full transportable,775,205,0.6823192126658109
+PSA2KQB,Learner-purged LOEO,Logistic regression (SGD),Full transportable,318,15,0.6803080308030803
+PSA2KPV,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1103,419,0.8109010593309047
+PSA2KPT,Learner-purged LOEO,Logistic regression (SGD),Full transportable,572,223,0.7394991455407507
+PSA2KP9,Learner-purged LOEO,Logistic regression (SGD),Full transportable,300,127,0.7337854444495014
+PSA2KNX,Learner-purged LOEO,Logistic regression (SGD),Full transportable,4401,1120,0.6522981342796186
+PSA2KNW,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1058,559,0.7382349672511392
+PSA2KNR,Learner-purged LOEO,Logistic regression (SGD),Full transportable,2072,572,0.7438041958041958
+PSA2KNP,Learner-purged LOEO,Logistic regression (SGD),Full transportable,468,264,0.8307338086749851
+PSA2KNM,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1891,698,0.7687705502729629
+PSA2KMQ,Learner-purged LOEO,Logistic regression (SGD),Full transportable,1273,801,0.7715831905033962
+PSA2KMP,Learner-purged LOEO,Logistic regression (SGD),Full transportable,2678,1254,0.7029779984947047
+PSA2KKZ,Learner-purged LOEO,Logistic regression (SGD),Full transportable,2548,1043,0.7220425363839932
+PSA2KKV,Learner-purged LOEO,Logistic regression (SGD),Full transportable,174,141,0.8394584139264991
+PSA29FC,Learner-purged LOEO,Logistic regression (SGD),Full transportable,373,118,0.8006646726487205
+PSA25TA,Learner-purged LOEO,Logistic regression (SGD),Full transportable,849,166,0.7743918573268183
+PSAMC2V,Learner-purged LOEO,Logistic regression (SGD),Full transportable,233,122,0.775513218136169
+PSAM4NK,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1210,492,0.7683195756052268
+PSAUUKY,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1806,361,0.6913887797256756
+PSAZGQM,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,336,31,0.6388683236382866
+PSAZ5HX,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,840,457,0.7403145728470957
+PSAZ2G4,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,151,53,0.8301886792452831
+PSAYN42,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,757,234,0.7737289797519243
+PSAYCFH,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1972,938,0.7663358394542897
+PSAXD6K,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,147,15,0.6964646464646466
+PSAWU6Z,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,968,440,0.784426652892562
+PSAWHF4,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1452,570,0.7722838843139596
+PSAVTMK,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1280,498,0.7392613933996858
+PSAVK69,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,825,441,0.8235071806500378
+PSAVDFE,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,2781,1780,0.733701410948602
+PSAV89B,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1682,925,0.732620229212039
+PSAUTWU,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1151,191,0.7084042321116928
+PSAUTWT,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1051,118,0.696314058895126
+PSAUKPR,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,590,241,0.6909486499661155
+PSAUKPM,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,372,133,0.6591059238053292
+PSAUK57,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1183,678,0.7483498349834984
+PSAU88D,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,948,405,0.7176954732510288
+PSAU85Y,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,605,175,0.730126245847176
+PSAU7GZ,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,216,112,0.7808207417582419
+PSAU6Y4,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,585,97,0.7936348656413723
+PSAU5XF,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,213,38,0.6610526315789473
+PSAU4JD,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,641,111,0.6793812680605134
+PSATZEJ,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,2739,298,0.7969317503828609
+PSATP2Z,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,787,242,0.6812874365001137
+PSATNCQ,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,361,139,0.7403590641000712
+PSATNB2,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,2102,1059,0.8082698904608899
+PSASRKH,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,840,519,0.8222288249029106
+PSASDZY,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,496,79,0.7952827611328659
+PSASA67,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,374,126,0.6923003072196621
+PSASA4B,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,423,165,0.7420953723279304
+PSAS25R,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,154,17,0.7544010304851867
+PSARZX2,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,470,71,0.7083200960146847
+PSAR9Y9,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1304,207,0.7579718952435056
+PSAR5JG,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,582,353,0.653611588752675
+PSAQJFP,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,3311,416,0.721908628935831
+PSAMR8Z,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,468,206,0.7883624842510931
+PSAKUSU,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1214,446,0.6761724588938716
+PSAJY7C,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,203,148,0.7246928746928748
+PSAJVP8,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,53,22,0.8365102639296188
+PSAJDQJ,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,2310,718,0.7228600348539356
+PSAJ4ZZ,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,460,67,0.7818540883369413
+PSAJ4ZU,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,278,107,0.7267858118817292
+PSAJ4YN,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,327,97,0.717346481398476
+PSAJ2EE,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,74,15,0.7112994350282486
+PSAHQV,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,5294,1044,0.7875397791300428
+PSAH9CV,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,185,12,0.7403660886319846
+PSAGF4,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1768,139,0.722414333726389
+PSABF5JC,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,5156,647,0.6959039160216404
+PSABCXRT,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,99,80,0.9131578947368422
+PSABARYW,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,672,330,0.7729930887825625
+PSABANRN,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1188,272,0.759825327510917
+PSA9XWV,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,547,286,0.7370388232457199
+PSA98J7,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,2459,683,0.6729329072850303
+PSA7GUA,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1843,867,0.7364191578270654
+PSA6DUN,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,875,190,0.7543449865539762
+PSA59VC,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,2084,756,0.6967253936380442
+PSA59TQ,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1847,405,0.6844720124655399
+PSA59TP,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,2585,364,0.689473853476555
+PSA55VC,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1723,588,0.7514699271779197
+PSA52JK,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,2310,690,0.6842744677044194
+PSA4MS2,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,775,205,0.7072956782199401
+PSA2KQB,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,318,15,0.7375137513751375
+PSA2KPV,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1103,419,0.7874289941241328
+PSA2KPT,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,572,223,0.740058077530934
+PSA2KP9,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,300,127,0.7893131855627873
+PSA2KNX,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,4401,1120,0.6609564810380111
+PSA2KNW,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1058,559,0.7518435798251243
+PSA2KNR,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,2072,572,0.7515862470862471
+PSA2KNP,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,468,264,0.81866458704694
+PSA2KNM,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1891,698,0.7728403749666753
+PSA2KMQ,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,1273,801,0.7646083285723354
+PSA2KMP,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,2678,1254,0.7209597826281742
+PSA2KKZ,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,2548,1043,0.7186269482039733
+PSA2KKV,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,174,141,0.7957231893402106
+PSA29FC,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,373,118,0.8188102359587903
+PSA25TA,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,849,166,0.7804865141385454
+PSAMC2V,Learner-purged LOEO,Logistic regression (SGD),Complete learner history,233,122,0.7888790429774037
+PSAM4NK,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1210,492,0.7717689154607424
+PSAUUKY,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1806,361,0.6896605929319748
+PSAZGQM,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,336,31,0.661660497091486
+PSAZ5HX,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,840,457,0.7240603093166353
+PSAZ2G4,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,151,53,0.7560646900269541
+PSAYN42,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,757,234,0.7689938062787013
+PSAYCFH,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1972,938,0.760398064939189
+PSAXD6K,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,147,15,0.7414141414141414
+PSAWU6Z,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,968,440,0.7646866391184572
+PSAWHF4,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1452,570,0.7621832358674464
+PSAVTMK,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1280,498,0.7433698990334741
+PSAVK69,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,825,441,0.8076105442176871
+PSAVDFE,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,2781,1780,0.7369321689546408
+PSAV89B,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1682,925,0.7228133814131172
+PSAUTWU,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1151,191,0.7243619109947644
+PSAUTWT,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1051,118,0.6798917288862244
+PSAUKPR,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,590,241,0.697475894375156
+PSAUKPM,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,372,133,0.6823229622172586
+PSAUK57,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1183,678,0.7455065860568357
+PSAU88D,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,948,405,0.7346247413773503
+PSAU85Y,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,605,175,0.6977674418604651
+PSAU7GZ,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,216,112,0.734632554945055
+PSAU6Y4,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,585,97,0.7937510562785195
+PSAU5XF,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,213,38,0.6729323308270676
+PSAU4JD,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,641,111,0.6800101988781234
+PSATZEJ,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,2739,298,0.780997995650369
+PSATP2Z,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,787,242,0.66160436727576
+PSATNCQ,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,361,139,0.7461598288936419
+PSATNB2,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,2102,1059,0.8005001190544092
+PSASRKH,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,840,519,0.8103349960083794
+PSASDZY,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,496,79,0.7641684121057584
+PSASA67,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,374,126,0.6813236047107014
+PSASA4B,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,423,165,0.7367864693446089
+PSAS25R,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,154,17,0.7629884070416488
+PSARZX2,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,470,71,0.7189452504500689
+PSAR9Y9,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1304,207,0.7327626068460756
+PSAR5JG,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,582,353,0.6356247757833665
+PSAQJFP,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,3311,416,0.718745848279527
+PSAMR8Z,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,468,206,0.775717038464389
+PSAKUSU,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1214,446,0.6865511724588939
+PSAJY7C,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,203,148,0.6993857493857495
+PSAJVP8,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,53,22,0.8577712609970675
+PSAJDQJ,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,2310,718,0.7012701040019037
+PSAJ4ZZ,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,460,67,0.7992480346359804
+PSAJ4ZU,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,278,107,0.7296278078373504
+PSAJ4YN,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,327,97,0.7287315105333931
+PSAJ2EE,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,74,15,0.7310734463276836
+PSAHQV,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,5294,1044,0.7898399819697994
+PSAH9CV,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,185,12,0.6623314065510597
+PSAGF4,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1768,139,0.7245253520940155
+PSABF5JC,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,5156,647,0.7195586501734639
+PSABCXRT,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,99,80,0.8368421052631579
+PSABARYW,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,672,330,0.7951089845826688
+PSABANRN,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1188,272,0.7405800475211921
+PSA9XWV,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,547,286,0.725477587546553
+PSA98J7,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,2459,683,0.676024395552214
+PSA7GUA,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1843,867,0.7382178039972015
+PSA6DUN,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,875,190,0.7653784095274683
+PSA59VC,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,2084,756,0.7010273235800345
+PSA59TQ,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1847,405,0.6604818410643654
+PSA59TP,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,2585,364,0.6440804805280266
+PSA55VC,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1723,588,0.7335775719979623
+PSA52JK,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,2310,690,0.6797003041689033
+PSA4MS2,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,775,205,0.68801026957638
+PSA2KQB,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,318,15,0.6932893289328933
+PSA2KPV,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1103,419,0.8099205850744602
+PSA2KPT,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,572,223,0.7414778932761124
+PSA2KP9,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,300,127,0.737244549633608
+PSA2KNX,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,4401,1120,0.6631229046022553
+PSA2KNW,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1058,559,0.7368690870112318
+PSA2KNR,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,2072,572,0.7570699300699302
+PSA2KNP,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,468,264,0.8476307189542484
+PSA2KNM,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1891,698,0.7671757650285693
+PSA2KMQ,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,1273,801,0.7668645125796144
+PSA2KMP,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,2678,1254,0.7051625808648281
+PSA2KKZ,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,2548,1043,0.7286411864574142
+PSA2KKV,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,174,141,0.8375241779497098
+PSA29FC,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,373,118,0.8053506148222
+PSA25TA,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,849,166,0.7805658946180035
+PSAMC2V,Learner-purged LOEO,Logistic regression (LBFGS),Full transportable,233,122,0.785408359178851
+PSAM4NK,Row random,LightGBM,Full transportable,1210,492,0.7956765065561519
+PSAUUKY,Row random,LightGBM,Full transportable,1806,361,0.7135341084453987
+PSAZGQM,Row random,LightGBM,Full transportable,336,31,0.751718667371761
+PSAZ5HX,Row random,LightGBM,Full transportable,840,457,0.7603424536225011
+PSAZ2G4,Row random,LightGBM,Full transportable,151,53,0.8442433577204467
+PSAYN42,Row random,LightGBM,Full transportable,757,234,0.7894829304963149
+PSAYCFH,Row random,LightGBM,Full transportable,1972,938,0.7739784429606595
+PSAXD6K,Row random,LightGBM,Full transportable,147,15,0.7315656565656565
+PSAWU6Z,Row random,LightGBM,Full transportable,968,440,0.8049500688705233
+PSAWHF4,Row random,LightGBM,Full transportable,1452,570,0.7964942117197756
+PSAVTMK,Row random,LightGBM,Full transportable,1280,498,0.7817548968251522
+PSAVK69,Row random,LightGBM,Full transportable,825,441,0.8344051162131519
+PSAVDFE,Row random,LightGBM,Full transportable,2781,1780,0.7590723882858714
+PSAV89B,Row random,LightGBM,Full transportable,1682,925,0.757950658716841
+PSAUTWU,Row random,LightGBM,Full transportable,1151,191,0.7391361256544503
+PSAUTWT,Row random,LightGBM,Full transportable,1051,118,0.705928570130979
+PSAUKPR,Row random,LightGBM,Full transportable,590,241,0.7287567323354219
+PSAUKPM,Row random,LightGBM,Full transportable,372,133,0.7012929814074937
+PSAUK57,Row random,LightGBM,Full transportable,1183,678,0.774359648354216
+PSAU88D,Row random,LightGBM,Full transportable,948,405,0.7949594161380533
+PSAU85Y,Row random,LightGBM,Full transportable,605,175,0.7284186046511628
+PSAU7GZ,Row random,LightGBM,Full transportable,216,112,0.7701751373626374
+PSAU6Y4,Row random,LightGBM,Full transportable,585,97,0.8328967382119317
+PSAU5XF,Row random,LightGBM,Full transportable,213,38,0.7117293233082707
+PSAU4JD,Row random,LightGBM,Full transportable,641,111,0.6947900730919598
+PSATZEJ,Row random,LightGBM,Full transportable,2739,298,0.7966842998111127
+PSATP2Z,Row random,LightGBM,Full transportable,787,242,0.6996663886572143
+PSATNCQ,Row random,LightGBM,Full transportable,361,139,0.7537429515846781
+PSATNB2,Row random,LightGBM,Full transportable,2102,1059,0.8210856675693073
+PSASRKH,Row random,LightGBM,Full transportable,840,519,0.8309743755964921
+PSASDZY,Row random,LightGBM,Full transportable,496,79,0.7788301004765807
+PSASA67,Row random,LightGBM,Full transportable,374,126,0.7152297747055811
+PSASA4B,Row random,LightGBM,Full transportable,423,165,0.7604651162790698
+PSAS25R,Row random,LightGBM,Full transportable,154,17,0.8681837698583083
+PSARZX2,Row random,LightGBM,Full transportable,470,71,0.7064845211620601
+PSAR9Y9,Row random,LightGBM,Full transportable,1304,207,0.7549553239181078
+PSAR5JG,Row random,LightGBM,Full transportable,582,353,0.720796170070636
+PSAQJFP,Row random,LightGBM,Full transportable,3311,416,0.7357600139497809
+PSAMR8Z,Row random,LightGBM,Full transportable,468,206,0.8030089676128362
+PSAKUSU,Row random,LightGBM,Full transportable,1214,446,0.7183923650037369
+PSAJY7C,Row random,LightGBM,Full transportable,203,148,0.7401719901719902
+PSAJVP8,Row random,LightGBM,Full transportable,53,22,0.8401759530791789
+PSAJDQJ,Row random,LightGBM,Full transportable,2310,718,0.7459988836942372
+PSAJ4ZZ,Row random,LightGBM,Full transportable,460,67,0.8133758687478637
+PSAJ4ZU,Row random,LightGBM,Full transportable,278,107,0.7464338416133792
+PSAJ4YN,Row random,LightGBM,Full transportable,327,97,0.7325638727028239
+PSAJ2EE,Row random,LightGBM,Full transportable,74,15,0.6932203389830509
+PSAHQV,Row random,LightGBM,Full transportable,5294,1044,0.7982250394410637
+PSAH9CV,Row random,LightGBM,Full transportable,185,12,0.6363198458574181
+PSAGF4,Row random,LightGBM,Full transportable,1768,139,0.7401349638521226
+PSABF5JC,Row random,LightGBM,Full transportable,5156,647,0.72691659442578
+PSABCXRT,Row random,LightGBM,Full transportable,99,80,0.8782894736842105
+PSABARYW,Row random,LightGBM,Full transportable,672,330,0.803300549353181
+PSABANRN,Row random,LightGBM,Full transportable,1188,272,0.774384712946314
+PSA9XWV,Row random,LightGBM,Full transportable,547,286,0.7603756396859845
+PSA98J7,Row random,LightGBM,Full transportable,2459,683,0.6814926199992085
+PSA7GUA,Row random,LightGBM,Full transportable,1843,867,0.7906184412048329
+PSA6DUN,Row random,LightGBM,Full transportable,875,190,0.7833230887437573
+PSA59VC,Row random,LightGBM,Full transportable,2084,756,0.7483505450372919
+PSA59TQ,Row random,LightGBM,Full transportable,1847,405,0.6957106898854472
+PSA59TP,Row random,LightGBM,Full transportable,2585,364,0.7116460756712897
+PSA55VC,Row random,LightGBM,Full transportable,1723,588,0.7602280559801013
+PSA52JK,Row random,LightGBM,Full transportable,2310,690,0.7310234388978349
+PSA4MS2,Row random,LightGBM,Full transportable,775,205,0.7077107402652973
+PSA2KQB,Row random,LightGBM,Full transportable,318,15,0.7222222222222222
+PSA2KPV,Row random,LightGBM,Full transportable,1103,419,0.807821811888512
+PSA2KPT,Row random,LightGBM,Full transportable,572,223,0.7506777853444178
+PSA2KP9,Row random,LightGBM,Full transportable,300,127,0.7799371899321833
+PSA2KNX,Row random,LightGBM,Full transportable,4401,1120,0.6888379250663996
+PSA2KNW,Row random,LightGBM,Full transportable,1058,559,0.7611215274914767
+PSA2KNR,Row random,LightGBM,Full transportable,2072,572,0.7760005827505827
+PSA2KNP,Row random,LightGBM,Full transportable,468,264,0.874981431966726
+PSA2KNM,Row random,LightGBM,Full transportable,1891,698,0.8042611268694895
+PSA2KMQ,Row random,LightGBM,Full transportable,1273,801,0.8013288474153071
+PSA2KMP,Row random,LightGBM,Full transportable,2678,1254,0.7547200083328853
+PSA2KKZ,Row random,LightGBM,Full transportable,2548,1043,0.7403009463501337
+PSA2KKV,Row random,LightGBM,Full transportable,174,141,0.8620245003223727
+PSA29FC,Row random,LightGBM,Full transportable,373,118,0.822632103688933
+PSA25TA,Row random,LightGBM,Full transportable,849,166,0.7951939529714758
+PSAMC2V,Row random,LightGBM,Full transportable,233,122,0.7780977699010486
+PSAM4NK,Row random,LightGBM,No context,1210,492,0.7939199900355549
+PSAUUKY,Row random,LightGBM,No context,1806,361,0.710032685063597
+PSAZGQM,Row random,LightGBM,No context,336,31,0.738339502908514
+PSAZ5HX,Row random,LightGBM,No context,840,457,0.7540007198724796
+PSAZ2G4,Row random,LightGBM,No context,151,53,0.8569503273007316
+PSAYN42,Row random,LightGBM,No context,757,234,0.7738883169093494
+PSAYCFH,Row random,LightGBM,No context,1972,938,0.7754074680479889
+PSAXD6K,Row random,LightGBM,No context,147,15,0.7217171717171718
+PSAWU6Z,Row random,LightGBM,No context,968,440,0.804825241046832
+PSAWHF4,Row random,LightGBM,No context,1452,570,0.7967388709869913
+PSAVTMK,Row random,LightGBM,No context,1280,498,0.7680055259400774
+PSAVK69,Row random,LightGBM,No context,825,441,0.832338317271353
+PSAVDFE,Row random,LightGBM,No context,2781,1780,0.7520409365914984
+PSAV89B,Row random,LightGBM,No context,1682,925,0.7473997643614553
+PSAUTWU,Row random,LightGBM,No context,1151,191,0.7316290357766143
+PSAUTWT,Row random,LightGBM,No context,1051,118,0.706941341035842
+PSAUKPR,Row random,LightGBM,No context,590,241,0.7237572673554554
+PSAUKPM,Row random,LightGBM,No context,372,133,0.701701953628842
+PSAUK57,Row random,LightGBM,No context,1183,678,0.7817518034989339
+PSAU88D,Row random,LightGBM,No context,948,405,0.7692699452061023
+PSAU85Y,Row random,LightGBM,No context,605,175,0.731734219269103
+PSAU7GZ,Row random,LightGBM,No context,216,112,0.787603021978022
+PSAU6Y4,Row random,LightGBM,No context,585,97,0.8281434848740915
+PSAU5XF,Row random,LightGBM,No context,213,38,0.7009774436090226
+PSAU4JD,Row random,LightGBM,No context,641,111,0.7050569437361891
+PSATZEJ,Row random,LightGBM,No context,2739,298,0.7973256092095604
+PSATP2Z,Row random,LightGBM,No context,787,242,0.6989347183258776
+PSATNCQ,Row random,LightGBM,No context,361,139,0.7561086266122237
+PSATNB2,Row random,LightGBM,No context,2102,1059,0.8203740571841415
+PSASRKH,Row random,LightGBM,No context,840,519,0.8339845977466851
+PSASDZY,Row random,LightGBM,No context,496,79,0.8000485687399448
+PSASA67,Row random,LightGBM,No context,374,126,0.7055011520737328
+PSASA4B,Row random,LightGBM,No context,423,165,0.7539346957951609
+PSAS25R,Row random,LightGBM,No context,154,17,0.8587376556462001
+PSARZX2,Row random,LightGBM,No context,470,71,0.705354936637368
+PSAR9Y9,Row random,LightGBM,No context,1304,207,0.7580577684418197
+PSAR5JG,Row random,LightGBM,No context,582,353,0.7148026275096799
+PSAQJFP,Row random,LightGBM,No context,3311,416,0.7377574066693238
+PSAMR8Z,Row random,LightGBM,No context,468,206,0.8104202178907582
+PSAKUSU,Row random,LightGBM,No context,1214,446,0.7053832095478325
+PSAJY7C,Row random,LightGBM,No context,203,148,0.7484029484029485
+PSAJVP8,Row random,LightGBM,No context,53,22,0.8372434017595308
+PSAJDQJ,Row random,LightGBM,No context,2310,718,0.7382276108957041
+PSAJ4ZZ,Row random,LightGBM,No context,460,67,0.8186168394667881
+PSAJ4ZU,Row random,LightGBM,No context,278,107,0.7406405421653823
+PSAJ4YN,Row random,LightGBM,No context,327,97,0.7253249663827879
+PSAJ2EE,Row random,LightGBM,No context,74,15,0.6983050847457628
+PSAHQV,Row random,LightGBM,No context,5294,1044,0.7920677259409511
+PSAH9CV,Row random,LightGBM,No context,185,12,0.6343930635838151
+PSAGF4,Row random,LightGBM,No context,1768,139,0.7347337599533634
+PSABF5JC,Row random,LightGBM,No context,5156,647,0.7225497485194474
+PSABCXRT,Row random,LightGBM,No context,99,80,0.8651315789473685
+PSABARYW,Row random,LightGBM,No context,672,330,0.7926103136629453
+PSABANRN,Row random,LightGBM,No context,1188,272,0.7744689988440792
+PSA9XWV,Row random,LightGBM,No context,547,286,0.7615947271119684
+PSA98J7,Row random,LightGBM,No context,2459,683,0.6784147342804004
+PSA7GUA,Row random,LightGBM,No context,1843,867,0.7861685054928431
+PSA6DUN,Row random,LightGBM,No context,875,190,0.7840799077986939
+PSA59VC,Row random,LightGBM,No context,2084,756,0.7350303993752788
+PSA59TQ,Row random,LightGBM,No context,1847,405,0.6854565846475232
+PSA59TP,Row random,LightGBM,No context,2585,364,0.712769839345706
+PSA55VC,Row random,LightGBM,No context,1723,588,0.7626809314033982
+PSA52JK,Row random,LightGBM,No context,2310,690,0.7232237430667382
+PSA4MS2,Row random,LightGBM,No context,775,205,0.7107188703465982
+PSA2KQB,Row random,LightGBM,No context,318,15,0.7144114411441144
+PSA2KPV,Row random,LightGBM,No context,1103,419,0.7979926446984607
+PSA2KPT,Row random,LightGBM,No context,572,223,0.753902887172832
+PSA2KP9,Row random,LightGBM,No context,300,127,0.7830321787811206
+PSA2KNX,Row random,LightGBM,No context,4401,1120,0.6785851711150781
+PSA2KNW,Row random,LightGBM,No context,1058,559,0.7635629039832796
+PSA2KNR,Row random,LightGBM,No context,2072,572,0.7729615384615385
+PSA2KNP,Row random,LightGBM,No context,468,264,0.8631535947712419
+PSA2KNM,Row random,LightGBM,No context,1891,698,0.8000802196192209
+PSA2KMQ,Row random,LightGBM,No context,1273,801,0.8023828794515331
+PSA2KMP,Row random,LightGBM,No context,2678,1254,0.7403281409601634
+PSA2KKZ,Row random,LightGBM,No context,2548,1043,0.7347040704841324
+PSA2KKV,Row random,LightGBM,No context,174,141,0.8639587362991618
+PSA29FC,Row random,LightGBM,No context,373,118,0.8166334330342306
+PSA25TA,Row random,LightGBM,No context,849,166,0.7942987175642541
+PSAMC2V,Row random,LightGBM,No context,233,122,0.7801654113129521
+PSAM4NK,Learner-purged LOEO,LightGBM,Full transportable,1210,492,0.7866929365672486
+PSAUUKY,Learner-purged LOEO,LightGBM,Full transportable,1806,361,0.6993855974848796
+PSAZGQM,Learner-purged LOEO,LightGBM,Full transportable,336,31,0.7391327340031729
+PSAZ5HX,Learner-purged LOEO,LightGBM,Full transportable,840,457,0.7284081105632717
+PSAZ2G4,Learner-purged LOEO,LightGBM,Full transportable,151,53,0.8232576049287641
+PSAYN42,Learner-purged LOEO,LightGBM,Full transportable,757,234,0.7743744995179029
+PSAYCFH,Learner-purged LOEO,LightGBM,Full transportable,1972,938,0.7588922271758093
+PSAXD6K,Learner-purged LOEO,LightGBM,Full transportable,147,15,0.7492424242424243
+PSAWU6Z,Learner-purged LOEO,LightGBM,Full transportable,968,440,0.7962271866391185
+PSAWHF4,Learner-purged LOEO,LightGBM,Full transportable,1452,570,0.7894299240163902
+PSAVTMK,Learner-purged LOEO,LightGBM,Full transportable,1280,498,0.752049117184852
+PSAVK69,Learner-purged LOEO,LightGBM,Full transportable,825,441,0.8150214947089948
+PSAVDFE,Learner-purged LOEO,LightGBM,Full transportable,2781,1780,0.7496096600029185
+PSAV89B,Learner-purged LOEO,LightGBM,Full transportable,1682,925,0.732838730408083
+PSAUTWU,Learner-purged LOEO,LightGBM,Full transportable,1151,191,0.7261125654450262
+PSAUTWT,Learner-purged LOEO,LightGBM,Full transportable,1051,118,0.6895834468726725
+PSAUKPR,Learner-purged LOEO,LightGBM,Full transportable,590,241,0.722282989929734
+PSAUKPM,Learner-purged LOEO,LightGBM,Full transportable,372,133,0.6958976940258597
+PSAUK57,Learner-purged LOEO,LightGBM,Full transportable,1183,678,0.7327316802476708
+PSAU88D,Learner-purged LOEO,LightGBM,Full transportable,948,405,0.7281949844258009
+PSAU85Y,Learner-purged LOEO,LightGBM,Full transportable,605,175,0.7071362126245848
+PSAU7GZ,Learner-purged LOEO,LightGBM,Full transportable,216,112,0.752918956043956
+PSAU6Y4,Learner-purged LOEO,LightGBM,Full transportable,585,97,0.811232465776576
+PSAU5XF,Learner-purged LOEO,LightGBM,Full transportable,213,38,0.7125563909774436
+PSAU4JD,Learner-purged LOEO,LightGBM,Full transportable,641,111,0.695886452490226
+PSATZEJ,Learner-purged LOEO,LightGBM,Full transportable,2739,298,0.7818489506721032
+PSATP2Z,Learner-purged LOEO,LightGBM,Full transportable,787,242,0.6815679733110926
+PSATNCQ,Learner-purged LOEO,LightGBM,Full transportable,361,139,0.7554280899604642
+PSATNB2,Learner-purged LOEO,LightGBM,Full transportable,2102,1059,0.8120162565853385
+PSASRKH,Learner-purged LOEO,LightGBM,Full transportable,840,519,0.820749224185019
+PSASDZY,Learner-purged LOEO,LightGBM,Full transportable,496,79,0.7742767811067601
+PSASA67,Learner-purged LOEO,LightGBM,Full transportable,374,126,0.6910682283666155
+PSASA4B,Learner-purged LOEO,LightGBM,Full transportable,423,165,0.7267794221282594
+PSAS25R,Learner-purged LOEO,LightGBM,Full transportable,154,17,0.841562902533276
+PSARZX2,Learner-purged LOEO,LightGBM,Full transportable,470,71,0.7005895019238237
+PSAR9Y9,Learner-purged LOEO,LightGBM,Full transportable,1304,207,0.74075101616618
+PSAR5JG,Learner-purged LOEO,LightGBM,Full transportable,582,353,0.6218748840258792
+PSAQJFP,Learner-purged LOEO,LightGBM,Full transportable,3311,416,0.7166463232363491
+PSAMR8Z,Learner-purged LOEO,LightGBM,Full transportable,468,206,0.7831838731193952
+PSAKUSU,Learner-purged LOEO,LightGBM,Full transportable,1214,446,0.6829646043535127
+PSAJY7C,Learner-purged LOEO,LightGBM,Full transportable,203,148,0.7208230958230957
+PSAJVP8,Learner-purged LOEO,LightGBM,Full transportable,53,22,0.8577712609970675
+PSAJDQJ,Learner-purged LOEO,LightGBM,Full transportable,2310,718,0.7281983559860585
+PSAJ4ZZ,Learner-purged LOEO,LightGBM,Full transportable,460,67,0.7910067980707152
+PSAJ4ZU,Learner-purged LOEO,LightGBM,Full transportable,278,107,0.7387276602721757
+PSAJ4YN,Learner-purged LOEO,LightGBM,Full transportable,327,97,0.7310174809502465
+PSAJ2EE,Learner-purged LOEO,LightGBM,Full transportable,74,15,0.7401129943502825
+PSAHQV,Learner-purged LOEO,LightGBM,Full transportable,5294,1044,0.7854190894748705
+PSAH9CV,Learner-purged LOEO,LightGBM,Full transportable,185,12,0.6541425818882467
+PSAGF4,Learner-purged LOEO,LightGBM,Full transportable,1768,139,0.7272237458651862
+PSABF5JC,Learner-purged LOEO,LightGBM,Full transportable,5156,647,0.7187570591257807
+PSABCXRT,Learner-purged LOEO,LightGBM,Full transportable,99,80,0.8549342105263158
+PSABARYW,Learner-purged LOEO,LightGBM,Full transportable,672,330,0.7775562643983698
+PSABANRN,Learner-purged LOEO,LightGBM,Full transportable,1188,272,0.7684024210120731
+PSA9XWV,Learner-purged LOEO,LightGBM,Full transportable,547,286,0.7330399485571899
+PSA98J7,Learner-purged LOEO,LightGBM,Full transportable,2459,683,0.6613089114004194
+PSA7GUA,Learner-purged LOEO,LightGBM,Full transportable,1843,867,0.7682588585096527
+PSA6DUN,Learner-purged LOEO,LightGBM,Full transportable,875,190,0.7702458701498271
+PSA59VC,Learner-purged LOEO,LightGBM,Full transportable,2084,756,0.7062705185822656
+PSA59TQ,Learner-purged LOEO,LightGBM,Full transportable,1847,405,0.6770603243095152
+PSA59TP,Learner-purged LOEO,LightGBM,Full transportable,2585,364,0.7031062139121571
+PSA55VC,Learner-purged LOEO,LightGBM,Full transportable,1723,588,0.7586779645779016
+PSA52JK,Learner-purged LOEO,LightGBM,Full transportable,2310,690,0.6950836464483808
+PSA4MS2,Learner-purged LOEO,LightGBM,Full transportable,775,205,0.6922250748823278
+PSA2KQB,Learner-purged LOEO,LightGBM,Full transportable,318,15,0.7581958195819581
+PSA2KPV,Learner-purged LOEO,LightGBM,Full transportable,1103,419,0.7785820458066408
+PSA2KPT,Learner-purged LOEO,LightGBM,Full transportable,572,223,0.7388952420111272
+PSA2KP9,Learner-purged LOEO,LightGBM,Full transportable,300,127,0.7828046060716399
+PSA2KNX,Learner-purged LOEO,LightGBM,Full transportable,4401,1120,0.6759370781991553
+PSA2KNW,Learner-purged LOEO,LightGBM,Full transportable,1058,559,0.7464051537780392
+PSA2KNR,Learner-purged LOEO,LightGBM,Full transportable,2072,572,0.7486264568764569
+PSA2KNP,Learner-purged LOEO,LightGBM,Full transportable,468,264,0.8589757872846109
+PSA2KNM,Learner-purged LOEO,LightGBM,Full transportable,1891,698,0.784725608071919
+PSA2KMQ,Learner-purged LOEO,LightGBM,Full transportable,1273,801,0.7966247169851245
+PSA2KMP,Learner-purged LOEO,LightGBM,Full transportable,2678,1254,0.7144135955952189
+PSA2KKZ,Learner-purged LOEO,LightGBM,Full transportable,2548,1043,0.7288510971736907
+PSA2KKV,Learner-purged LOEO,LightGBM,Full transportable,174,141,0.8481624758220503
+PSA29FC,Learner-purged LOEO,LightGBM,Full transportable,373,118,0.8269192422731805
+PSA25TA,Learner-purged LOEO,LightGBM,Full transportable,849,166,0.7901577025525234
+PSAMC2V,Learner-purged LOEO,LightGBM,Full transportable,233,122,0.7885098212967064
+PSAM4NK,Learner-purged LOEO,LightGBM,No context,1210,492,0.7849265122177683
+PSAUUKY,Learner-purged LOEO,LightGBM,No context,1806,361,0.7048711288328269
+PSAZGQM,Learner-purged LOEO,LightGBM,No context,336,31,0.7392384981491275
+PSAZ5HX,Learner-purged LOEO,LightGBM,No context,840,457,0.7118310470716617
+PSAZ2G4,Learner-purged LOEO,LightGBM,No context,151,53,0.8542549095109742
+PSAYN42,Learner-purged LOEO,LightGBM,No context,757,234,0.7701214230850942
+PSAYCFH,Learner-purged LOEO,LightGBM,No context,1972,938,0.7643021078635559
+PSAXD6K,Learner-purged LOEO,LightGBM,No context,147,15,0.7553030303030304
+PSAWU6Z,Learner-purged LOEO,LightGBM,No context,968,440,0.7989561811294765
+PSAWHF4,Learner-purged LOEO,LightGBM,No context,1452,570,0.7872727453554522
+PSAVTMK,Learner-purged LOEO,LightGBM,No context,1280,498,0.7280926776158342
+PSAVK69,Learner-purged LOEO,LightGBM,No context,825,441,0.8160962301587302
+PSAVDFE,Learner-purged LOEO,LightGBM,No context,2781,1780,0.7385577905240828
+PSAV89B,Learner-purged LOEO,LightGBM,No context,1682,925,0.7322753400692634
+PSAUTWU,Learner-purged LOEO,LightGBM,No context,1151,191,0.722998472949389
+PSAUTWT,Learner-purged LOEO,LightGBM,No context,1051,118,0.6925082202481517
+PSAUKPR,Learner-purged LOEO,LightGBM,No context,590,241,0.7148462114636959
+PSAUKPM,Learner-purged LOEO,LightGBM,No context,372,133,0.7056501085349356
+PSAUK57,Learner-purged LOEO,LightGBM,No context,1183,678,0.7382984316130728
+PSAU88D,Learner-purged LOEO,LightGBM,No context,948,405,0.747420594320533
+PSAU85Y,Learner-purged LOEO,LightGBM,No context,605,175,0.7218671096345516
+PSAU7GZ,Learner-purged LOEO,LightGBM,No context,216,112,0.7860576923076923
+PSAU6Y4,Learner-purged LOEO,LightGBM,No context,585,97,0.8236014872401555
+PSAU5XF,Learner-purged LOEO,LightGBM,No context,213,38,0.7077443609022557
+PSAU4JD,Learner-purged LOEO,LightGBM,No context,641,111,0.7088390277069523
+PSATZEJ,Learner-purged LOEO,LightGBM,No context,2739,298,0.7874268989769293
+PSATP2Z,Learner-purged LOEO,LightGBM,No context,787,242,0.6675525058761089
+PSATNCQ,Learner-purged LOEO,LightGBM,No context,361,139,0.7560276103441571
+PSATNB2,Learner-purged LOEO,LightGBM,No context,2102,1059,0.8095559496875162
+PSASRKH,Learner-purged LOEO,LightGBM,No context,840,519,0.8257582578526881
+PSASDZY,Learner-purged LOEO,LightGBM,No context,496,79,0.8007163889141851
+PSASA67,Learner-purged LOEO,LightGBM,No context,374,126,0.6880760368663594
+PSASA4B,Learner-purged LOEO,LightGBM,No context,423,165,0.7376438806671364
+PSAS25R,Learner-purged LOEO,LightGBM,No context,154,17,0.8570201803349078
+PSARZX2,Learner-purged LOEO,LightGBM,No context,470,71,0.7139856683963429
+PSAR9Y9,Learner-purged LOEO,LightGBM,No context,1304,207,0.7491401670784177
+PSAR5JG,Learner-purged LOEO,LightGBM,No context,582,353,0.6078280985192425
+PSAQJFP,Learner-purged LOEO,LightGBM,No context,3311,416,0.7200901753686727
+PSAMR8Z,Learner-purged LOEO,LightGBM,No context,468,206,0.7920773734529015
+PSAKUSU,Learner-purged LOEO,LightGBM,No context,1214,446,0.6911084641255605
+PSAJY7C,Learner-purged LOEO,LightGBM,No context,203,148,0.7135749385749386
+PSAJVP8,Learner-purged LOEO,LightGBM,No context,53,22,0.8643695014662757
+PSAJDQJ,Learner-purged LOEO,LightGBM,No context,2310,718,0.7302441875113731
+PSAJ4ZZ,Learner-purged LOEO,LightGBM,No context,460,67,0.8042421480384337
+PSAJ4ZU,Learner-purged LOEO,LightGBM,No context,278,107,0.7391648904191943
+PSAJ4YN,Learner-purged LOEO,LightGBM,No context,327,97,0.7351860152398028
+PSAJ2EE,Learner-purged LOEO,LightGBM,No context,74,15,0.7180790960451978
+PSAHQV,Learner-purged LOEO,LightGBM,No context,5294,1044,0.7769036511156187
+PSAH9CV,Learner-purged LOEO,LightGBM,No context,185,12,0.6960500963391137
+PSAGF4,Learner-purged LOEO,LightGBM,No context,1768,139,0.7288644222743352
+PSABF5JC,Learner-purged LOEO,LightGBM,No context,5156,647,0.7120087491169129
+PSABCXRT,Learner-purged LOEO,LightGBM,No context,99,80,0.8506578947368422
+PSABARYW,Learner-purged LOEO,LightGBM,No context,672,330,0.7672248803827751
+PSABANRN,Learner-purged LOEO,LightGBM,No context,1188,272,0.7631807089648087
+PSA9XWV,Learner-purged LOEO,LightGBM,No context,547,286,0.7353709508881923
+PSA98J7,Learner-purged LOEO,LightGBM,No context,2459,683,0.6660780473005949
+PSA7GUA,Learner-purged LOEO,LightGBM,No context,1843,867,0.7693821260423166
+PSA6DUN,Learner-purged LOEO,LightGBM,No context,875,190,0.7713407606607761
+PSA59VC,Learner-purged LOEO,LightGBM,No context,2084,756,0.711403650315548
+PSA59TQ,Learner-purged LOEO,LightGBM,No context,1847,405,0.67650040239037
+PSA59TP,Learner-purged LOEO,LightGBM,No context,2585,364,0.7064181316207431
+PSA55VC,Learner-purged LOEO,LightGBM,No context,1723,588,0.7650940993137343
+PSA52JK,Learner-purged LOEO,LightGBM,No context,2310,690,0.6930636070853463
+PSA4MS2,Learner-purged LOEO,LightGBM,No context,775,205,0.7058964484381686
+PSA2KQB,Learner-purged LOEO,LightGBM,No context,318,15,0.7875687568756876
+PSA2KPV,Learner-purged LOEO,LightGBM,No context,1103,419,0.7711848734804394
+PSA2KPT,Learner-purged LOEO,LightGBM,No context,572,223,0.7475940226399578
+PSA2KP9,Learner-purged LOEO,LightGBM,No context,300,127,0.7758408811615312
+PSA2KNX,Learner-purged LOEO,LightGBM,No context,4401,1120,0.6706598053729264
+PSA2KNW,Learner-purged LOEO,LightGBM,No context,1058,559,0.7515173459620493
+PSA2KNR,Learner-purged LOEO,LightGBM,No context,2072,572,0.7354254079254079
+PSA2KNP,Learner-purged LOEO,LightGBM,No context,468,264,0.8452354426619133
+PSA2KNM,Learner-purged LOEO,LightGBM,No context,1891,698,0.7806581851632133
+PSA2KMQ,Learner-purged LOEO,LightGBM,No context,1273,801,0.7974129266383121
+PSA2KMP,Learner-purged LOEO,LightGBM,No context,2678,1254,0.7070811605110836
+PSA2KKZ,Learner-purged LOEO,LightGBM,No context,2548,1043,0.7250214210859933
+PSA2KKV,Learner-purged LOEO,LightGBM,No context,174,141,0.8389211261551688
+PSA29FC,Learner-purged LOEO,LightGBM,No context,373,118,0.8245596543702226
+PSA25TA,Learner-purged LOEO,LightGBM,No context,849,166,0.7857212157561432
+PSAMC2V,Learner-purged LOEO,LightGBM,No context,233,122,0.7828238074139715

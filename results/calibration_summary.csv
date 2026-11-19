@@ -1,0 +1,13 @@
+scope,model,metric,value,q1,q3,n_experiments
+Pooled,Logistic regression,Calibration intercept,-0.1143243987412713,,,88
+Pooled,Logistic regression,Calibration slope,0.662281879124179,,,88
+Experiment-level,Logistic regression,Calibration intercept,0.3295605604769714,-0.6179206684881824,0.9856911990086764,70
+Experiment-level,Logistic regression,Calibration slope,0.8675470292420481,0.6831039269898258,1.043952881523747,70
+Pooled,LightGBM,Calibration intercept,-0.0596286957314037,,,88
+Pooled,LightGBM,Calibration slope,0.9633970398912812,,,88
+Experiment-level,LightGBM,Calibration intercept,0.3778015752541093,-0.5579616285355675,0.9102454545798848,70
+Experiment-level,LightGBM,Calibration slope,1.1605456199914723,0.9922356518808364,1.3464471827637023,70
+Experiment-level,Logistic regression (LBFGS),Calibration intercept,0.28298746473469055,-0.6303983571125396,0.9385330127901872,70
+Experiment-level,Logistic regression (LBFGS),Calibration slope,1.1547756369034687,0.9045566117331709,1.3277337763317618,70
+Pooled,Logistic regression (LBFGS),Calibration intercept,-0.12884577133151956,,,88
+Pooled,Logistic regression (LBFGS),Calibration slope,0.8539255362391058,,,88

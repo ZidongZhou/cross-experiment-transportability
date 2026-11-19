@@ -1,0 +1,4 @@
+model,n_experiments,improved,unchanged,worsened,median_brier_increase_among_worsened,mean_brier_increase_among_worsened,max_brier_increase
+Logistic regression,69,55,0,14,0.008413265108408077,0.018226802816222163,0.06681016374401488
+LightGBM,69,52,0,17,0.01578070284325417,0.021868461967107143,0.07058825428511165
+Logistic regression (LBFGS),69,50,0,19,0.01093842164403544,0.01832524048004546,0.08183765419217462

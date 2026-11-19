@@ -1,0 +1,11 @@
+quantity,value
+Experiments in archive,88.0
+Raw assignment-log rows,95990.0
+Duplicated assignment reference IDs,11.0
+Unique learner-assignment events,95979.0
+Unique learners in primary cohort,45101.0
+Unusable assignment start times,0.0
+Insufficient observable follow-up for 14-day endpoint,870.0
+Evaluable 14-day events,95109.0
+14-day recorded noncompletion events,30305.0
+14-day endpoint prevalence,0.31863440894131995
