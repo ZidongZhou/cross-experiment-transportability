@@ -125,7 +125,7 @@ The `auprc` field in historical result tables records non-interpolated average p
 
 ## Reproducibility and citation
 
-The primary model seed is `20260807`; the alternate LightGBM seed and additional-analysis bootstrap seed are `20260808`. Software versions are pinned in `environment.yml`. The `CITATION.cff` file provides software citation metadata and links to this repository. After this GitHub repository is archived in Zenodo, use the version-specific Zenodo DOI in the associated article's Code Availability statement and in citations to this software release.
+The primary model seed is `20260807`; the alternate LightGBM seed and additional-analysis bootstrap seed are `20260808`. Software versions are pinned in `environment.yml`. The `CITATION.cff` file provides software citation metadata and links to this repository. The software is archived on Zenodo. Please use the version-specific Zenodo DOI when citing this release.
 
 ## License
 
