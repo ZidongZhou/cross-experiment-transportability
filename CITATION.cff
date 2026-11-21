@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "Please cite the associated article and the archived software release when using these analyses."
+message: "If you use this software, please cite the associated article and this archived release."
 type: software
 repository-code: "https://github.com/ZidongZhou/cross-experiment-transportability"
 url: "https://github.com/ZidongZhou/cross-experiment-transportability"
@@ -16,6 +16,9 @@ authors:
   - family-names: Liu
     given-names: Ke
 version: "1.0"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24374175"
 keywords:
   - learning analytics
   - educational data mining

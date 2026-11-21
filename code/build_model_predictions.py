@@ -76,6 +76,7 @@ def write_predictor_comparison_tables(d, prediction_workfile):
 
 
 def main():
+    ap.DIAGNOSTIC_STAGE = "build_model_predictions.py"
     print("Verify raw archive and reconstruct cohort", flush=True)
     ap.verify_raw_archive(ap.RAW)
     alogs, priors, slog, _ = ap.load_raw(ap.RAW)
@@ -169,6 +170,7 @@ def main():
 
     # Pooled metrics used in the predictor-analysis supplementary tables.
     write_predictor_comparison_tables(d, pwork)
+    ap.write_convergence_diagnostics(append=True)
 
 
 if __name__ == "__main__":

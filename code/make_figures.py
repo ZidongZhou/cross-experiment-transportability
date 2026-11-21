@@ -9,7 +9,7 @@ SRC = ROOT / 'results'
 OUT = ROOT / 'figures'
 OUT.mkdir(parents=True, exist_ok=True)
 
-# Journal-style defaults: compact sans serif typography, editable SVG text,
+# Journal-style defaults: compact sans serif typography,
 # minimal ink, colour-blind-safe model distinction and no decorative background.
 plt.rcParams.update({
     'font.family': 'sans-serif',
@@ -25,8 +25,6 @@ plt.rcParams.update({
     'ytick.major.width': 0.7,
     'xtick.major.size': 3,
     'ytick.major.size': 3,
-    'svg.fonttype': 'none',
-    'pdf.fonttype': 42,
     'ps.fonttype': 42,
     'figure.dpi': 180,
 })
@@ -34,7 +32,6 @@ plt.rcParams.update({
 C_LOG = '#4D4D4D'
 C_LGB = '#1F77B4'
 C_LIGHT = '#A6A6A6'
-MARKER = {'Logistic regression': 'o', 'LightGBM': 's'}
 
 
 def clean_ax(ax):
@@ -60,8 +57,7 @@ def save(fig, n):
     elif n == 4:
         fig.subplots_adjust(left=0.14, right=0.985, bottom=0.13, top=0.97,
                             wspace=0.34, hspace=0.48)
-    for ext, kwargs in [('svg', {}), ('pdf', {}), ('eps', {}), ('png', {'dpi': 600})]:
-        fig.savefig(OUT / f'Fig{n}.{ext}', bbox_inches='tight', facecolor='white', **kwargs)
+    fig.savefig(OUT / f'Fig{n}.eps', bbox_inches='tight', facecolor='white')
     plt.close(fig)
 
 
@@ -87,7 +83,7 @@ for letter, ax, keys, labels in sets:
     lgbv = np.array([v[(v.validation == k) & (v.model == 'LightGBM')].iloc[0].auroc for k in keys])
     for yy, a, b in zip(y, logv, lgbv):
         ax.plot([a, b], [yy, yy], color=C_LIGHT, lw=0.8, zorder=1)
-    ax.scatter(logv, y, s=24, marker='o', color=C_LOG, label='Logistic regression', zorder=3)
+    ax.scatter(logv, y, s=24, marker='o', color=C_LOG, label='SGD logistic regression', zorder=3)
     ax.scatter(lgbv, y, s=25, marker='s', color=C_LGB, label='LightGBM', zorder=3)
     ax.set_yticks(y, labels)
     ax.tick_params(axis='y', labelsize=7.2, pad=2)
@@ -109,7 +105,7 @@ ax.errorbar(x, med, yerr=[med-lo, hi-med], fmt='o', color=C_LGB, ecolor=C_LGB,
             capsize=2.5, lw=1.0, ms=4, zorder=3)
 ax.axhline(0, color=C_LIGHT, lw=0.8, ls=':')
 ax.set_xticks(x, labels, rotation=15, ha='right')
-ax.set_ylabel('Median paired AUROC gap\n(LightGBM − logistic)')
+ax.set_ylabel('Median paired AUROC gap\n(LightGBM − SGD logistic regression)')
 ax.set_ylim(min(-0.002, lo.min()-0.001), hi.max()+0.003)
 clean_ax(ax); panel(ax, 'c')
 save(fig, 1)
@@ -125,11 +121,11 @@ sel = auc[(auc.validation == 'Learner-purged LOEO') &
 plot_order = [
     ('Logistic regression (SGD)', 'Full transportable', 'SGD: full set'),
     ('Logistic regression (SGD)', 'Complete learner history', 'SGD: learner history'),
-    ('Logistic regression (LBFGS)', 'Full transportable', 'LBFGS: full set'),
+    ('Logistic regression (LBFGS)', 'Full transportable', 'L-BFGS: full set'),
 ]
 for y, (model, feature_set, label) in enumerate(plot_order[::-1]):
     r = sel[(sel.model == model) & (sel.feature_set == feature_set)].iloc[0]
-    colour = C_LOG if 'SGD' in model else C_LGB
+    colour = C_LOG if 'SGD' in model else '#888888'
     ax.errorbar(r.median_auroc, y,
                 xerr=[[r.median_auroc-r.bootstrap_95_low], [r.bootstrap_95_high-r.median_auroc]],
                 fmt='o', color=colour, ecolor=colour, capsize=2.3, ms=4)
@@ -140,7 +136,7 @@ sgd_delta = abl[abl.comparison == 'Logistic SGD: learner history minus full set'
 ax.text(0.02, -0.24,
         f"Paired Δ history − full (SGD): {sgd_delta.median_difference:+.3f} "
         f"[{sgd_delta.median_bootstrap_95_low:+.3f}, {sgd_delta.median_bootstrap_95_high:+.3f}]",
-        transform=ax.transAxes, fontsize=6.2, va='top')
+        transform=ax.transAxes, fontsize=7.0, va='top')
 clean_ax(ax); panel(ax, 'a')
 
 ax = axs[1]
@@ -159,9 +155,9 @@ ax.set_yticks([0, 1], ['Learner-purged LOEO', 'Row random'])
 ax.set_xlabel('AUROC change after removing context\n(No context − full set; 95% bootstrap CI)')
 interaction = abl[abl.comparison.str.startswith('LightGBM: row-random context effect minus')].iloc[0]
 ax.text(0.02, -0.28,
-        f"Difference between designs: {interaction.median_difference:+.3f} "
+        f"Row-random − learner-purged context effect: {interaction.median_difference:+.3f} "
         f"[{interaction.median_bootstrap_95_low:+.3f}, {interaction.median_bootstrap_95_high:+.3f}]",
-        transform=ax.transAxes, fontsize=6.5, va='top')
+        transform=ax.transAxes, fontsize=7.0, va='top')
 clean_ax(ax); panel(ax, 'b')
 save(fig, 2)
 
@@ -186,7 +182,7 @@ for mi, (model, colour, marker) in enumerate(calibration_styles):
         ax.errorbar(xpos, r.value, yerr=[[r.value-r.q1], [r.q3-r.value]],
                     fmt=marker, color=colour, markerfacecolor=colour,
                     ms=4.0, lw=0.9, capsize=2.3,
-                    label=model if j == 0 else None)
+                    label=('SGD logistic regression' if model == 'Logistic regression' else 'L-BFGS logistic regression' if model == 'Logistic regression (LBFGS)' else model) if j == 0 else None)
 ax.axhline(0, color=C_LIGHT, lw=0.8, ls=':', xmin=0.03, xmax=0.48)
 ax.axhline(1, color=C_LIGHT, lw=0.8, ls=':', xmin=0.52, xmax=0.97)
 ax.set_xticks([0, 1], ['Intercept', 'Slope'])
@@ -220,7 +216,7 @@ for model, colour, marker, offset in recal_styles:
         ax.errorbar(xpos + offset, mean, yerr=[[mean-lo], [hi-mean]],
                     fmt=marker, color=colour, ecolor=colour, ms=3.9,
                     lw=0.85, capsize=2.1,
-                    label=model if version == 'No local update' or model == 'Prevalence-only reference' else None)
+                    label=('SGD logistic regression' if model == 'Logistic regression' else 'L-BFGS logistic regression' if model == 'Logistic regression (LBFGS)' else model) if version == 'No local update' or model == 'Prevalence-only reference' else None)
 ax.set_xticks([0, 1, 2, 3], ['No update', 'Local prevalence', 'Intercept', 'Intercept + slope'])
 ax.set_ylabel('Mean experiment-level Brier score')
 ax.tick_params(axis='x', labelrotation=12, labelsize=7)
@@ -228,8 +224,7 @@ ax.legend(frameon=False, loc='upper center', bbox_to_anchor=(0.5, -0.42),
           fontsize=6.2, ncol=2, columnspacing=1.2, handletextpad=0.5)
 clean_ax(ax); panel(ax, 'b')
 fig.subplots_adjust(left=0.11, right=0.985, bottom=0.38, top=0.94, wspace=0.42)
-for ext, kwargs in [('svg', {}), ('pdf', {}), ('eps', {}), ('png', {'dpi': 600})]:
-    fig.savefig(OUT / f'Fig3.{ext}', bbox_inches='tight', facecolor='white', **kwargs)
+fig.savefig(OUT / 'Fig3.eps', bbox_inches='tight', facecolor='white')
 plt.close(fig)
 
 
@@ -254,10 +249,16 @@ for ax, metric, low_col, high_col, ylabel, letter in [
         x = sub.capacity.to_numpy() * 100
         y = sub[metric].to_numpy()
         lo = sub[low_col].to_numpy(); hi = sub[high_col].to_numpy()
+        display_model = {
+            'Logistic regression (SGD)': 'SGD logistic regression',
+            'Logistic regression (LBFGS)': 'L-BFGS logistic regression',
+            'LightGBM': 'LightGBM',
+        }[model]
         ax.errorbar(x, y, yerr=[y-lo, hi-y], color=colour, marker=marker,
-                    linestyle=linestyle, lw=1.0, ms=3.5, capsize=2.0, label=model)
+                    linestyle=linestyle, lw=1.0, ms=3.5, capsize=2.0,
+                    label=display_model)
     ax.set_ylabel(ylabel)
-    ax.set_xlabel('Review capacity within experiment (%)')
+    # Shared x-axes show numeric tick labels only on the lower row.
     ax.xaxis.set_major_locator(MaxNLocator(integer=True, nbins=6))
     clean_ax(ax); panel(ax, letter)
 axs[0, 0].legend(frameon=False, loc='best', fontsize=6.4)
@@ -278,10 +279,10 @@ for ax, metric, ylabel, letter in [
         y = sub.difference.to_numpy()
         lo = sub.bootstrap_95_low.to_numpy(); hi = sub.bootstrap_95_high.to_numpy()
         ax.errorbar(x, y, yerr=[y-lo, hi-y], color=colour, marker=marker,
-                    linestyle=linestyle, lw=1.0, ms=3.5, capsize=2.0, label=comparison.replace(' minus ', ' − '))
+                    linestyle=linestyle, lw=1.0, ms=3.5, capsize=2.0, label=('LightGBM − SGD logistic regression' if '(SGD)' in comparison else 'LightGBM − L-BFGS logistic regression'))
     ax.axhline(0, color=C_LIGHT, lw=0.8, ls=':')
-    ax.set_ylabel(ylabel)
-    ax.set_xlabel('Review capacity (%)')
+    ax.set_ylabel('Δ Precision' if metric == 'precision' else 'Δ Recall')
+    ax.set_xlabel('Review capacity within experiment (%)')
     ax.xaxis.set_major_locator(MaxNLocator(integer=True, nbins=6))
     clean_ax(ax); panel(ax, letter)
 axs[1, 0].legend(frameon=False, loc='upper left', fontsize=6.1)
@@ -306,11 +307,11 @@ fig, ax = plt.subplots(figsize=(3.3, 2.35))
 x = np.arange(4)
 logvals = [log_rows[log_rows.analysis == a].iloc[0].auroc for a in order]
 lgbvals = [lgb_map[a] for a in order]
-ax.plot(x, logvals, marker='o', color=C_LOG, lw=1.1, ms=4, label='Logistic regression')
+ax.plot(x, logvals, marker='o', color=C_LOG, lw=1.1, ms=4, label='SGD logistic regression')
 ax.plot(x, lgbvals, marker='s', color=C_LGB, lw=1.1, ms=4, label='LightGBM')
 ax.set_xticks(x, lab); ax.set_ylabel('AUROC'); ax.set_ylim(0.68, 0.73)
 ax.legend(frameon=False, loc='lower right'); clean_ax(ax); fig.tight_layout(pad=0.7)
-for ext, kw in [('svg',{}),('pdf',{}),('eps',{}),('png',{'dpi':600})]: fig.savefig(OUT/f'FigS1.{ext}',bbox_inches='tight',facecolor='white',**kw)
+fig.savefig(OUT/'FigS1.eps',bbox_inches='tight',facecolor='white')
 plt.close(fig)
 
 # repeated-learner sensitivity
@@ -321,12 +322,12 @@ for yy,a in zip(y,['Learner-balanced evaluation','Earliest record per learner'])
     xlog=rb[(rb.analysis==a)&(rb.model=='Logistic regression')].iloc[0].auroc
     xlgb=rb[(rb.analysis==a)&(rb.model=='LightGBM')].iloc[0].auroc
     ax.plot([xlog,xlgb],[yy,yy],color=C_LIGHT,lw=.9)
-    ax.scatter(xlog,yy,s=24,color=C_LOG,marker='o',label='Logistic regression' if yy==1 else None)
+    ax.scatter(xlog,yy,s=24,color=C_LOG,marker='o',label='SGD logistic regression' if yy==1 else None)
     ax.scatter(xlgb,yy,s=25,color=C_LGB,marker='s',label='LightGBM' if yy==1 else None)
-ax.set_yticks(y,labels); ax.set_xlabel('AUROC'); ax.set_xlim(.665,.710)
+ax.set_yticks(y,labels); ax.set_xlabel('AUROC'); ax.set_xlim(.665,.710); ax.set_xticks([.67,.68,.69,.70])
 ax.legend(frameon=False, loc='upper center', bbox_to_anchor=(0.5, -0.27),
           ncol=2, columnspacing=1.4, handlelength=1.3); clean_ax(ax); fig.tight_layout(pad=.8)
-for ext,kw in [('svg',{}),('pdf',{}),('eps',{}),('png',{'dpi':600})]: fig.savefig(OUT/f'FigS2.{ext}',bbox_inches='tight',facecolor='white',**kw)
+fig.savefig(OUT/'FigS2.eps',bbox_inches='tight',facecolor='white')
 plt.close(fig)
 
 print('Figures written to', OUT)

@@ -214,10 +214,27 @@ def joint_purge(d):
             "combined_purged_train_n": len(tr),
             "combined_purged_fraction": 1 - len(tr) / len(base), "test_n": len(te),
         })
-    jobs = [delayed(ap.fit_predict)(tr, te, d, ap.FEATURE_SETS["Full transportable"])
-            for tr, te in splits]
+    fit_jobs = [
+        (tr, te, {
+            "validation": "Learner + class + teacher-purged LOEO",
+            "fold": fold + 1,
+            "experiment_id": str(d.iloc[te[0]].experiment_id),
+        })
+        for fold, (tr, te) in enumerate(splits)
+    ]
+    jobs = [
+        delayed(ap.fit_predict)(
+            tr, te, d, ap.FEATURE_SETS["Full transportable"],
+            fit_context=context,
+        )
+        for tr, te, context in fit_jobs
+    ]
     res = Parallel(n_jobs=ap.N_JOBS, backend="threading")(jobs) if ap.N_JOBS != 1 else [
-        ap.fit_predict(tr, te, d, ap.FEATURE_SETS["Full transportable"]) for tr, te in splits
+        ap.fit_predict(
+            tr, te, d, ap.FEATURE_SETS["Full transportable"],
+            fit_context=context,
+        )
+        for tr, te, context in fit_jobs
     ]
     preds = {m: np.full(len(d), np.nan) for m in ("Logistic regression", "LightGBM")}
     for te, out in res:
@@ -613,6 +630,50 @@ def export_supplementary_table_s12(d, local_reference):
     return table
 
 
+def build_local_recalibration_worsened_table(lr, model_names):
+    """Build experiment-level details for models whose intercept update worsened Brier."""
+    worsened_rows = []
+    for model in model_names:
+        model_sub = lr.loc[lr["model"] == model].copy()
+        wide = model_sub.pivot(
+            index="experiment_id", columns="probability_version", values="brier"
+        )
+        required_versions = {"Intercept update", "No local update"}
+        if not required_versions.issubset(wide.columns):
+            raise ValueError(f"{model}: local-recalibration Brier table is missing required versions.")
+        delta = wide["Intercept update"] - wide["No local update"]
+        worsened = delta[delta > 0].sort_values(ascending=False)
+        detail_columns = ["n_calibration", "n_evaluation", "update_time"]
+        inconsistent = (
+            model_sub.groupby("experiment_id")[detail_columns]
+            .nunique(dropna=False).gt(1).any(axis=1)
+        )
+        if inconsistent.any():
+            raise ValueError(
+                f"{model}: calibration/evaluation metadata varies within an experiment."
+            )
+        details = model_sub.drop_duplicates("experiment_id").set_index("experiment_id")
+        if not details.index.is_unique:
+            raise ValueError(f"{model}: experiment-level recalibration details are not unique.")
+        if not set(worsened.index).issubset(details.index):
+            raise AssertionError(f"{model}: worsened experiments are missing calibration/evaluation details.")
+        for experiment_id, value in worsened.items():
+            worsened_rows.append({
+                "model": model,
+                "experiment_id": experiment_id,
+                "n_calibration": int(details.loc[experiment_id, "n_calibration"]),
+                "n_evaluation": int(details.loc[experiment_id, "n_evaluation"]),
+                "update_time": details.loc[experiment_id, "update_time"],
+                "brier_increase": float(value),
+                "brier_before": float(wide.loc[experiment_id, "No local update"]),
+                "brier_after": float(wide.loc[experiment_id, "Intercept update"]),
+            })
+    return pd.DataFrame(worsened_rows, columns=[
+        "model", "experiment_id", "n_calibration", "n_evaluation",
+        "update_time", "brier_increase", "brier_before", "brier_after",
+    ])
+
+
 def run_local_prevalence_analysis(d, purged_predictions):
     print("Evaluating local calibration benchmarks...", flush=True)
     lr, recalibration_membership = ap.local_recalibration(d, purged_predictions, return_membership=True)
@@ -730,20 +791,12 @@ def run_local_prevalence_analysis(d, purged_predictions):
                               "median_bootstrap_95_high": mhi})
     pd.DataFrame(pair_rows).to_csv(OUT / "local_recalibration_pairwise_contrasts.csv", index=False)
 
-    worsened_rows = []
-    for model in purged_predictions:
-        wide = lr[lr.model == model].pivot(index="experiment_id", columns="probability_version", values="brier")
-        delta = wide["Intercept update"] - wide["No local update"]
-        worsened = delta[delta > 0].sort_values(ascending=False)
-        details = model_sub.drop_duplicates("experiment_id").set_index("experiment_id")
-        for experiment_id, value in worsened.items():
-            worsened_rows.append({"model": model, "experiment_id": experiment_id,
-                                  "n_calibration": int(details.loc[experiment_id, "n_calibration"]),
-                                  "n_evaluation": int(details.loc[experiment_id, "n_evaluation"]),
-                                  "update_time": details.loc[experiment_id, "update_time"],
-                                  "brier_increase": float(value), "brier_before": float(wide.loc[experiment_id, "No local update"]),
-                                  "brier_after": float(wide.loc[experiment_id, "Intercept update"])})
-    pd.DataFrame(worsened_rows).to_csv(OUT / "local_recalibration_worsened_experiments.csv", index=False)
+    worsened_table = build_local_recalibration_worsened_table(
+        lr, purged_predictions.keys()
+    )
+    worsened_table.to_csv(
+        OUT / "local_recalibration_worsened_experiments.csv", index=False
+    )
     worsening_summary = []
     for model in purged_predictions:
         wide = lr[lr.model == model].pivot(index="experiment_id", columns="probability_version", values="brier")
@@ -1024,6 +1077,7 @@ def joint_purge_outputs_are_valid(d):
 
 
 def main():
+    ap.DIAGNOSTIC_STAGE = "additional_analyses.py"
     print("Checking raw archive and reconstructing evaluable cohort...", flush=True)
     full, d = load_dataset()
     predwork = load_prediction_workfile(d)
@@ -1094,6 +1148,7 @@ def main():
     overlap_map["LightGBM seed 20260808"] = predwork["learner_purged_loeo__lightgbm_seed_20260808"].to_numpy()
     shortlist_metrics(d, overlap_map)
 
+    ap.write_convergence_diagnostics(append=True)
     print("Additional analyses complete. Aggregate outputs are in", OUT, flush=True)
 
 

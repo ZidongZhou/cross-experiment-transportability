@@ -2,7 +2,9 @@
 
 **Version 1.0**
 
-Repository: https://github.com/ZidongZhou/cross-experiment-transportability
+Repository: [GitHub](https://github.com/ZidongZhou/cross-experiment-transportability)
+
+Archived software release: [Zenodo, DOI 10.5281/zenodo.24374175](https://doi.org/10.5281/zenodo.24374175)
 
 This repository contains the analysis code, aggregate result tables and figures for a study of 14-day recorded assignment noncompletion in the public ASSISTments multi-experiment archive. The analyses cover within-archive validation, leave-one-experiment-out (LOEO) evaluation, predictor comparisons, probability calibration, outcome-horizon sensitivity and fixed-capacity record selection.
 
@@ -52,16 +54,16 @@ python code/make_figures.py
 
 The stages have the following inputs and outputs:
 
-1. **`analysis_pipeline.py`** verifies and reads the source archive, reconstructs the analysis cohort, fits the primary models and validation designs, and writes the primary validation tables, cohort summaries, calibration summaries, sensitivity analyses and `results/horizon_lightgbm.csv`. The 7-day, 30-day and archive-closure LightGBM sensitivity models use the same five-fold experiment-blocked, learner-purged design as the corresponding logistic-regression analyses.
-2. **`build_model_predictions.py`** reconstructs the cohort and fits the additional out-of-fold prediction sets used for the LBFGS comparator, learner-history and context-ablation comparisons, and the alternate-seed LightGBM reference. It writes local intermediate prediction files under `analysis_work/` and aggregate cohort and predictor tables under `results/`. The builder replaces the preliminary prediction workfile written by the primary pipeline.
-3. **`additional_analyses.py`** checks the local prediction-workfile provenance and computes paired experiment-level bootstrap intervals, validation-design contrasts, predictor comparisons, calibration benchmarks, capacity intervals, shortlist-stability analyses and `results/Supplementary_Table_S12.csv`.
-4. **`make_figures.py`** reads the aggregate result tables and writes Figures 1–4 and Supplementary Figures S1–S2.
+1. **`analysis_pipeline.py`** verifies and reads the source archive, reconstructs the analysis cohort, fits the primary models and validation designs, and writes the primary validation tables, cohort summaries, calibration summaries, sensitivity analyses, `results/horizon_lightgbm.csv` and the initial `results/convergence_diagnostics.csv`. This first set of diagnostics covers the SGD fits made by the primary pipeline. It records iteration counts and any `ConvergenceWarning` without changing model settings or predictions. The 7-day, 30-day and archive-closure LightGBM sensitivity models use the same five-fold experiment-blocked, learner-purged design as the corresponding logistic-regression analyses.
+2. **`build_model_predictions.py`** reconstructs the cohort and fits the additional out-of-fold prediction sets used for the LBFGS comparator, learner-history and context-ablation comparisons, and the alternate-seed LightGBM reference. It writes local intermediate prediction files under `analysis_work/` and aggregate cohort and predictor tables under `results/`. The builder replaces the preliminary prediction workfile written by the primary pipeline and appends the SGD fit diagnostics from this stage to `results/convergence_diagnostics.csv`.
+3. **`additional_analyses.py`** checks the local prediction-workfile provenance and computes paired experiment-level bootstrap intervals, validation-design contrasts, predictor comparisons, calibration benchmarks, capacity intervals, shortlist-stability analyses and `results/Supplementary_Table_S12.csv`. If the joint-purge results need to be refitted, the SGD fit diagnostics from that refit are also appended to the same file.
+4. **`make_figures.py`** reads the aggregate result tables and writes EPS-only versions of Figures 1–4 and Supplementary Figures S1–S2.
 
-The record-level prediction workfile is generated locally and excluded from version control. It is not distributed in this repository. Its provenance record checks the source-data checksum, generating-code checksums, fixed model configuration, row keys and predicted probabilities. If the raw archive, prediction code, model configuration or prediction values change, rebuild the workfile by running `build_model_predictions.py` before `additional_analyses.py`. Keep the four stages in the order shown: rerunning `analysis_pipeline.py` after the prediction builder replaces the complete prediction workfile with the primary pipeline's preliminary predictions, so the builder must then be run again.
+The record-level prediction workfile is generated locally and is not included in the repository. Its provenance record stores the source-data and code SHA256 values, model configuration, row keys and prediction fingerprint. Run the four stages in the order shown; if you rerun `analysis_pipeline.py`, run `build_model_predictions.py` again before `additional_analyses.py`.
 
 ### Joint-purge analysis
 
-The three aggregate tables for the joint learner-, class- and teacher-purged LOEO analysis are included in `results/`. Their SHA256 digests, together with the model-specification digest, are listed in `results/aggregate_output_checksums.sha256`. Before using these tables, the analysis code checks file integrity and verifies that their experiment coverage, sample sizes, event counts, eligibility flags and model labels match the reconstructed cohort. If a table is missing or fails validation, the joint-purge analysis is recomputed from the source data.
+The three aggregate tables for the joint learner-, class- and teacher-purged LOEO analysis are included in `results/`. Their SHA256 values, together with the model-specification file, are recorded in `results/aggregate_output_checksums.sha256`. The analysis checks these files against the reconstructed cohort before reusing them.
 
 To explicitly recompute the joint-purge analysis, set the following variable before running `additional_analyses.py`:
 
@@ -91,7 +93,7 @@ Remove-Item Env:TKL_RECOMPUTE_JOINT_PURGE
 ## Outputs
 
 - **`results/`** contains aggregate tables used by the manuscript, supplementary material and figures. It does not contain row-level predictions or participant-level source records.
-- **`figures/`** contains Figures 1–4 and Supplementary Figures S1–S2 in PDF, EPS, SVG and 600-DPI PNG formats.
+- **`figures/`** contains only the vector EPS versions of Figures 1–4 and Supplementary Figures S1–S2. Running `code/make_figures.py` regenerates these six EPS files.
 - **`FIGURE_LEGENDS.md`** contains the figure titles and descriptions.
 - **`analysis_work/`** is created locally for intermediate prediction files and is excluded from version control.
 
@@ -104,8 +106,11 @@ Key result files include:
 | Predictor comparisons | `feature_blocks.csv`, `feature_blocks_loeo.csv`, `lightgbm_context_loeo.csv`, `feature_auc_summary.csv`, `feature_ablation_uncertainty.csv` |
 | Standard logistic-regression comparator | `logistic_lbfgs_comparison.csv`, `logistic_lbfgs_gap_comparison.csv`, `logistic_lbfgs_calibration_slope.csv`, `logistic_lbfgs_calibration_experiment_level.csv` |
 | Calibration and local updating | `calibration_summary.csv`, `local_recalibration.csv`, `local_recalibration_comparison.csv`, `local_recalibration_pairwise_contrasts.csv`, `local_prevalence_reference_by_experiment.csv`, `local_recalibration_worsening_summary.csv` |
-| Capacity and shortlist stability | `capacity_model_uncertainty.csv`, `capacity_difference_uncertainty.csv`, `shortlist_overlap_summary.csv`, `shortlist_overlap_reference.csv`, `shortlist_overlap_reference_contrasts.csv` |
+| Capacity and shortlist stability | `capacity_screening.csv`, `capacity_model_uncertainty.csv`, `capacity_difference_uncertainty.csv`, `shortlist_overlap_summary.csv`, `shortlist_overlap_reference.csv`, `shortlist_overlap_reference_contrasts.csv` |
 | Outcome-horizon sensitivity | `sensitivity_summary.csv`, `horizon_lightgbm.csv` |
+| Model fitting diagnostics | `convergence_diagnostics.csv` |
+
+The archived `convergence_diagnostics.csv` contains 505 SGD fit records: 324 from `analysis_pipeline.py` and 181 from `build_model_predictions.py`. None reached `max_iter=1500` or raised `ConvergenceWarning`; the maximum observed `n_iter_` was 55.
 
 `Supplementary_Table_S12.csv` lists all 88 experiments and indicates eligibility for experiment-specific AUROC, calibration and chronological local recalibration analyses. For the 69 local-recalibration experiments, it also reports the calibration, waiting-period exclusion and evaluation sample sizes.
 
@@ -113,19 +118,19 @@ Key result files include:
 
 The primary endpoint is the absence of a recorded completion within 14 days after the recorded assignment start. Experiment identifiers define the held-out target experiments; learner, class and teacher identifiers define grouped and purged validation designs. All preprocessing is fitted on training folds only.
 
-Experiment-specific AUROC eligibility requires at least 50 evaluable records and at least 10 observations in each outcome class. Calibration eligibility requires at least 100 records and at least 50 observations in each outcome class. Chronological local recalibration uses the earliest 20% of records as the calibration cohort, waits until the 14-day outcomes for that cohort have matured, excludes records beginning during the waiting period, and evaluates on later records. Calibration and evaluation cohorts must each contain at least 30 records and at least five observations in each outcome class.
+Experiment-specific AUROC eligibility requires at least 50 evaluable records and at least 10 observations in each outcome class. Calibration eligibility requires at least 100 records and at least 50 observations in each outcome class. Chronological local recalibration uses the earliest 20% of records as the calibration cohort, waits until the 14-day outcomes for that cohort have matured, excludes records beginning during the waiting period, and evaluates on later records. Calibration and evaluation cohorts must each contain at least 30 records and at least five observations in each outcome class. For each within-experiment review capacity \(c\) in 5%, 10%, 15%, 20%, 25% and 30%, the selected count is \(k=\max(1,\lceil c n\rceil)\); ties are resolved by the stable descending probability sort. Class- and teacher-level screening excludes groups with fewer than 20 records within an experiment. Precision and recall for these two ranking units therefore describe the retained eligible groups; experiment-level screening uses all records in the cohort.
 
 Paired uncertainty is estimated by resampling whole experiments (10,000 bootstrap replicates unless otherwise specified). Capacity precision and recall intervals are calculated by resampling experiments and recomputing pooled numerators and denominators. The reported intervals are pointwise 95% intervals without multiplicity adjustment. Pooled calibration intercepts and slopes are estimated from all record-level out-of-fold predictions; experiment-level medians and interquartile ranges are calculated across the 70 calibration-eligible experiments. These are different estimands and should not be compared as if they were the same summary. Mean Brier comparisons for chronological local updating use the separate set of 69 local-recalibration-eligible experiments.
 
-The historical logistic-regression comparator uses `SGDClassifier` with L2 regularisation. The standard-solver comparator uses `LogisticRegression(solver='lbfgs', C=1.0, max_iter=5000, tol=1e-4)` with L2 regularisation. The regularisation setting is fixed and is not selected using held-out target experiments. LightGBM uses the fixed settings recorded in `results/model_specification.csv`.
+The historical logistic-regression comparator uses `SGDClassifier` with L2 regularisation (`alpha=1e-4`, `max_iter=1500`, `tol=1e-3`, `average=True`, `random_state=20260807`). The standard-solver comparator uses `LogisticRegression(solver='lbfgs', C=1.0, max_iter=5000, tol=1e-4)` with L2 regularisation. The regularisation setting is fixed and is not selected using held-out target experiments. LightGBM uses the fixed settings recorded in `results/model_specification.csv`.
 
-The local-prevalence reference assigns each later evaluation record the observed noncompletion prevalence in the corresponding experiment's calibration cohort. Calibration and evaluation membership is checked by comparing record keys in memory; participant-derived record hashes are not written to public result tables. Intercept-only updating worsened Brier score in 14/69 SGD logistic-regression experiments, 19/69 LBFGS logistic-regression experiments and 17/69 LightGBM experiments. The experiment-specific changes and their magnitudes are reported in the local-recalibration result tables.
+The local-prevalence reference assigns each later evaluation record the observed noncompletion prevalence in the corresponding experiment's calibration cohort. Intercept-only updating worsened Brier score in 14/69 SGD logistic-regression experiments, 19/69 LBFGS logistic-regression experiments and 17/69 LightGBM experiments. The experiment-specific changes are reported in the local-recalibration result tables.
 
 The `auprc` field in historical result tables records non-interpolated average precision computed by `sklearn.metrics.average_precision_score` (reported as AP in the manuscript).
 
 ## Reproducibility and citation
 
-The primary model seed is `20260807`; the alternate LightGBM seed and additional-analysis bootstrap seed are `20260808`. Software versions are pinned in `environment.yml`. The `CITATION.cff` file provides software citation metadata and links to this repository. After this GitHub repository is archived in Zenodo, use the version-specific Zenodo DOI in the associated article's Code Availability statement and in citations to this software release.
+The primary model seed is `20260807`; the alternate LightGBM seed and additional-analysis bootstrap seed are `20260808`. Software versions are pinned in `environment.yml`. The `CITATION.cff` file records the software citation and the version 1.0 Zenodo DOI ([10.5281/zenodo.24374175](https://doi.org/10.5281/zenodo.24374175)).
 
 ## License
 

@@ -11,6 +11,7 @@ All outcome construction, preprocessing and model fitting are performed here.
 from __future__ import annotations
 import io, json, zipfile, hashlib, os, math, time, warnings
 from pathlib import Path
+from threading import Lock
 import numpy as np
 import pandas as pd
 from joblib import Parallel, delayed
@@ -18,6 +19,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import SGDClassifier, LogisticRegression
+from sklearn.exceptions import ConvergenceWarning
 from sklearn.metrics import roc_auc_score, average_precision_score, brier_score_loss, log_loss
 from sklearn.model_selection import StratifiedKFold, StratifiedGroupKFold, StratifiedShuffleSplit, GroupKFold
 from sklearn.pipeline import Pipeline
@@ -27,11 +29,18 @@ import statsmodels.api as sm
 from scipy.special import expit, logit
 
 SEED=20260807
+MIN_CAPACITY_GROUP_SIZE=20
 N_JOBS=int(os.environ.get('TKL_N_JOBS','4'))
 ROOT=Path(__file__).resolve().parents[1]
 RAW=Path(os.environ.get('TKL_RAW_ZIP', ROOT/'data'/'experiment_dataset_2021-09-23.zip'))
 EXPECTED_RAW_SHA256='06d8c992c9600781dc1c7c80690e29ec46588df260aea9a44ef16b7d083266ea'
 OUT=ROOT/'results'; WORK=ROOT/'analysis_work'; OUT.mkdir(parents=True,exist_ok=True); WORK.mkdir(parents=True,exist_ok=True)
+
+# Diagnostic-only collection: estimator settings and predictions are not changed.
+FIT_DIAGNOSTICS = []
+FIT_DIAGNOSTICS_LOCK = Lock()
+SGD_FIT_WARNING_LOCK = Lock()
+DIAGNOSTIC_STAGE = 'analysis_pipeline.py'
 
 def sha256_file(path: Path, chunk_size=1024*1024):
     h=hashlib.sha256()
@@ -39,6 +48,33 @@ def sha256_file(path: Path, chunk_size=1024*1024):
         for chunk in iter(lambda: f.read(chunk_size), b''):
             h.update(chunk)
     return h.hexdigest()
+
+def write_convergence_diagnostics(append=False):
+    """Write SGD fold diagnostics without changing fitted estimators or predictions."""
+    columns = [
+        'analysis_stage', 'validation', 'fold', 'experiment_id',
+        'n_train', 'n_test', 'n_input_features', 'feature_columns_sha256',
+        'n_iter', 'max_iter', 'reached_max_iter', 'convergence_warning',
+        'status', 'warning_message',
+    ]
+    current = pd.DataFrame(FIT_DIAGNOSTICS, columns=columns)
+    path = OUT / 'convergence_diagnostics.csv'
+    if current.empty and not (append and path.exists()):
+        return
+    frames = []
+    if append and path.exists():
+        frames.append(pd.read_csv(path))
+    if not current.empty:
+        frames.append(current)
+    combined = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame(columns=columns)
+    if not combined.empty:
+        combined = combined.drop_duplicates(subset=columns, keep='last')
+        combined = combined.sort_values(
+            ['analysis_stage', 'validation', 'fold', 'experiment_id'],
+            kind='mergesort',
+        ).reset_index(drop=True)
+    combined.to_csv(path, index=False)
+
 
 def verify_raw_archive(path: Path):
     if not path.exists():
@@ -163,7 +199,8 @@ def make_model(name, random_state=SEED):
         return ExtraTreesClassifier(n_estimators=80,min_samples_leaf=10,max_features='sqrt',class_weight=None,random_state=random_state,n_jobs=1)
     raise KeyError(name)
 
-def fit_predict(train_idx,test_idx,d,cols,model_names=('Logistic regression','LightGBM'),model_seeds=None):
+def fit_predict(train_idx,test_idx,d,cols,model_names=('Logistic regression','LightGBM'),
+                model_seeds=None,fit_context=None):
     train_idx=np.asarray(train_idx,dtype=int); test_idx=np.asarray(test_idx,dtype=int)
     assert len(np.intersect1d(train_idx,test_idx))==0, 'Training and test indices overlap'
     assert len(train_idx)>0 and len(test_idx)>0, 'Empty training or test split'
@@ -171,8 +208,51 @@ def fit_predict(train_idx,test_idx,d,cols,model_names=('Logistic regression','Li
     Xtr=pre.fit_transform(d.iloc[train_idx][cols]); Xte=pre.transform(d.iloc[test_idx][cols]); ytr=d.iloc[train_idx].y.to_numpy()
     out={}
     model_seeds = model_seeds or {}
+    context = fit_context or {}
+    feature_hash = hashlib.sha256('\\n'.join(cols).encode('utf-8')).hexdigest()
     for name in model_names:
-        m=make_model(name,random_state=model_seeds.get(name,SEED)); m.fit(Xtr,ytr); pred=m.predict_proba(Xte)[:,1]
+        m=make_model(name,random_state=model_seeds.get(name,SEED))
+        if name == 'Logistic regression':
+            # Capture the existing SGD convergence warning under a lock because
+            # warnings.catch_warnings changes process-level filters and folds run in threads.
+            with SGD_FIT_WARNING_LOCK:
+                with warnings.catch_warnings(record=True) as caught:
+                    warnings.simplefilter('always', ConvergenceWarning)
+                    m.fit(Xtr,ytr)
+            n_iter = int(np.max(np.atleast_1d(m.n_iter_)))
+            max_iter = int(m.max_iter)
+            warning_messages = [
+                str(w.message) for w in caught
+                if issubclass(w.category, ConvergenceWarning)
+            ]
+            reached_max_iter = n_iter >= max_iter
+            if warning_messages:
+                status = 'convergence_warning'
+            elif reached_max_iter:
+                status = 'max_iter_reached_without_warning'
+            else:
+                status = 'stopped_before_max_iter'
+            diagnostic = {
+                'analysis_stage': DIAGNOSTIC_STAGE,
+                'validation': context.get('validation', 'unspecified'),
+                'fold': context.get('fold', np.nan),
+                'experiment_id': context.get('experiment_id', ''),
+                'n_train': int(len(train_idx)),
+                'n_test': int(len(test_idx)),
+                'n_input_features': int(len(cols)),
+                'feature_columns_sha256': feature_hash,
+                'n_iter': n_iter,
+                'max_iter': max_iter,
+                'reached_max_iter': bool(reached_max_iter),
+                'convergence_warning': bool(warning_messages),
+                'status': status,
+                'warning_message': ' | '.join(warning_messages),
+            }
+            with FIT_DIAGNOSTICS_LOCK:
+                FIT_DIAGNOSTICS.append(diagnostic)
+        else:
+            m.fit(Xtr,ytr)
+        pred=m.predict_proba(Xte)[:,1]
         assert np.isfinite(pred).all(), f'Non-finite predictions from {name}'
         out[name]=pred
     return test_idx,out
@@ -205,7 +285,16 @@ def run_kfold(d,validation,cols,model_names=('Logistic regression','LightGBM'),m
     elif validation=='Learner + teacher grouped':
         groups=assign_connected_components(d,'teacher_id'); splitter=StratifiedGroupKFold(5,shuffle=True,random_state=SEED); splits=list(splitter.split(idx,y,groups=groups))
     else: raise KeyError(validation)
-    res=[fit_predict(tr,te,d,cols,model_names,model_seeds) for tr,te in splits] if N_JOBS==1 else Parallel(n_jobs=N_JOBS,backend='threading')(delayed(fit_predict)(tr,te,d,cols,model_names,model_seeds) for tr,te in splits)
+    fit_jobs = [
+        (tr, te, {'validation': validation, 'fold': fold + 1})
+        for fold, (tr, te) in enumerate(splits)
+    ]
+    res = ([fit_predict(tr, te, d, cols, model_names, model_seeds, fit_context=context)
+            for tr, te, context in fit_jobs] if N_JOBS == 1 else
+           Parallel(n_jobs=N_JOBS, backend='threading')(
+               delayed(fit_predict)(tr, te, d, cols, model_names, model_seeds,
+                                    fit_context=context)
+               for tr, te, context in fit_jobs))
     preds={m:np.full(n,np.nan) for m in model_names}
     for te,out in res:
         for m,p in out.items(): preds[m][te]=p
@@ -235,7 +324,17 @@ def loeo_splits(d,mode):
 
 def run_loeo(d,mode,cols,model_names=('Logistic regression','LightGBM'),model_seeds=None):
     splits,pstats=loeo_splits(d,mode)
-    res=[fit_predict(tr,te,d,cols,model_names,model_seeds) for tr,te in splits] if N_JOBS==1 else Parallel(n_jobs=N_JOBS,backend='threading')(delayed(fit_predict)(tr,te,d,cols,model_names,model_seeds) for tr,te in splits)
+    fit_jobs = [
+        (tr, te, {'validation': mode, 'fold': fold + 1,
+                  'experiment_id': str(d.iloc[te[0]].experiment_id)})
+        for fold, (tr, te) in enumerate(splits)
+    ]
+    res = ([fit_predict(tr, te, d, cols, model_names, model_seeds, fit_context=context)
+            for tr, te, context in fit_jobs] if N_JOBS == 1 else
+           Parallel(n_jobs=N_JOBS, backend='threading')(
+               delayed(fit_predict)(tr, te, d, cols, model_names, model_seeds,
+                                    fit_context=context)
+               for tr, te, context in fit_jobs))
     preds={m:np.full(len(d),np.nan) for m in model_names}
     for te,out in res:
         for m,p in out.items(): preds[m][te]=p
@@ -250,10 +349,20 @@ def run_experiment_grouped_purged(d,cols,model_names=('Logistic regression','Lig
         tr=tr0[~np.isin(d.student_id.to_numpy()[tr0],test_students)]
         assert len(np.intersect1d(np.unique(d.student_id.to_numpy()[tr]),test_students))==0, 'Learner purge failed in experiment-blocked CV'
         splits.append((tr,te))
-    if N_JOBS==1:
-        res=[fit_predict(tr,te,d,cols,model_names,model_seeds) for tr,te in splits]
+    fit_jobs = [
+        (tr, te, {'validation': 'Learner-purged experiment-grouped CV', 'fold': fold + 1})
+        for fold, (tr, te) in enumerate(splits)
+    ]
+    if N_JOBS == 1:
+        res = [fit_predict(tr, te, d, cols, model_names, model_seeds,
+                           fit_context=context)
+               for tr, te, context in fit_jobs]
     else:
-        res=Parallel(n_jobs=N_JOBS,backend='threading')(delayed(fit_predict)(tr,te,d,cols,model_names,model_seeds) for tr,te in splits)
+        res = Parallel(n_jobs=N_JOBS, backend='threading')(
+            delayed(fit_predict)(tr, te, d, cols, model_names, model_seeds,
+                                 fit_context=context)
+            for tr, te, context in fit_jobs
+        )
     preds={m:np.full(len(d),np.nan) for m in model_names}
     for te,out in res:
         for m,p in out.items(): preds[m][te]=p
@@ -365,7 +474,7 @@ def capacity_group(d,preds,group_cols,label):
     eligible=[]; sel={m:[] for m in preds}; allidx=[]
     groups=d.groupby(group_cols,sort=False)
     for key,g in groups:
-        if len(g)<20: continue
+        if len(g)<MIN_CAPACITY_GROUP_SIZE: continue
         ii=g.index.to_numpy(); allidx.extend(ii.tolist()); eligible.append((key,len(g)))
         k=max(1,int(math.ceil(0.10*len(g))))
         for m,p in preds.items(): sel[m].extend(ii[np.argsort(-p[ii],kind='mergesort')[:k]].tolist())
@@ -409,6 +518,7 @@ def run_horizon_lightgbm(full, horizon):
 
 # ---------- main ----------
 def main():
+    FIT_DIAGNOSTICS.clear()
     t0=time.time(); print('Verifying raw archive...',flush=True); verify_raw_archive(RAW)
     print('Loading raw archive...',flush=True)
     alogs,priors,slog,expstats=load_raw(RAW); full=derive_dataset(alogs,priors,slog)
@@ -529,7 +639,9 @@ def main():
         {'component':'Numeric preprocessing','setting':'pipeline','value':'Training-fold median imputation with missing indicators, then standardisation'},
         {'component':'Categorical preprocessing','setting':'pipeline','value':'Training-fold most-frequent imputation and one-hot encoding; unseen categories ignored; categories with frequency <20 grouped'},
         {'component':'Validation','setting':'random_seed','value':str(SEED)},
-        {'component':'Capacity','setting':'top_decile','value':'ceil(0.10*n) per ranking group; stable descending sort for ties'},
+        {'component':'Capacity','setting':'selection_rule','value':'k=max(1, ceil(c*n)); c=0.10 for experiment-, class- and teacher-level screening and c in {0.05, 0.10, 0.15, 0.20, 0.25, 0.30} for within-experiment capacity curves; stable descending sort for ties'},
+        {'component':'Capacity','setting':'minimum_group_size','value':f'{MIN_CAPACITY_GROUP_SIZE} records for class- and teacher-level screening within each experiment; no group-size exclusion for experiment-level screening'},
+        {'component':'SGD convergence diagnostics','setting':'output','value':'convergence_diagnostics.csv records n_iter_, max_iter, ConvergenceWarning, validation fold and train/test sizes; diagnostic only, with no estimator-setting changes'},
         {'component':'Local recalibration','setting':'eligibility','value':'Earliest 20% calibration cohort; update after all 14-day outcomes mature; >=30 calibration and later records, >=5 observations in each outcome class in both sets'}]
     for fs,cols in FEATURE_SETS.items(): specs.append({'component':'Feature set','setting':fs,'value':'; '.join(cols)})
     pd.DataFrame(specs).to_csv(OUT/'model_specification.csv',index=False)
@@ -552,6 +664,7 @@ def main():
       'local_recal_experiments':int(lr.experiment_id.nunique()) if len(lr) else 0,
       'cap_log_precision':float(capdf.loc[('Experiment','Logistic regression'),'precision']),'cap_lgb_precision':float(capdf.loc[('Experiment','LightGBM'),'precision'])}
     pd.DataFrame([h]).to_csv(OUT/'headline_metrics.csv',index=False)
+    write_convergence_diagnostics(append=False)
     print('DONE in',round((time.time()-t0)/60,1),'minutes',flush=True); print(json.dumps(h,indent=2),flush=True)
 
 if __name__=='__main__': main()
